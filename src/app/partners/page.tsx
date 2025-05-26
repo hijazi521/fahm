@@ -14,7 +14,7 @@ export default function PartnersPage() {
           Our Valued Partners
         </h1>
         <p className="mt-3 text-base text-muted-foreground sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:text-xl">
-          Collaborating with leading institutions to drive innovation and disseminate knowledge.
+          Institutes and Organizations that are helping accelerate this project and increase the reach of Fahm to the whole globe
         </p>
       </section>
 
