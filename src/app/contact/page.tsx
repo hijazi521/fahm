@@ -1,12 +1,81 @@
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+'use client';
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
+import { useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Label } from "@/components/ui/label"; // Kept for feedback section
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Send, Instagram, Linkedin, Twitter, Star } from "lucide-react";
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { useToast } from "@/hooks/use-toast";
+import { Mail, Send, Instagram, Linkedin, Twitter, Star, Loader2 } from "lucide-react";
+import { handleContactFormSubmission } from "@/app/actions/contact-actions";
+
+const contactFormSchema = z.object({
+  name: z.string().min(2, {
+    message: "Name must be at least 2 characters.",
+  }),
+  email: z.string().email({
+    message: "Please enter a valid email address.",
+  }),
+  subject: z.string().min(5, {
+    message: "Subject must be at least 5 characters.",
+  }),
+  message: z.string().min(10, {
+    message: "Message must be at least 10 characters.",
+  }).max(1000, {
+    message: "Message cannot exceed 1000 characters."
+  }),
+});
+
+type ContactFormValues = z.infer<typeof contactFormSchema>;
 
 export default function ContactUsPage() {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const form = useForm<ContactFormValues>({
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
+    },
+  });
+
+  async function onSubmit(values: ContactFormValues) {
+    setIsSubmitting(true);
+    try {
+      const result = await handleContactFormSubmission(values);
+      if (result.success) {
+        toast({
+          title: "Message Sent!",
+          description: "Thank you for contacting us. We have received your message (logged to console).",
+        });
+        form.reset();
+      } else {
+        toast({
+          title: "Submission Failed",
+          description: result.error || "An unexpected error occurred. Please try again.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Submission Error",
+        description: "An error occurred while submitting the form. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
   return (
     <div className="space-y-8">
       <section className="text-center py-8">
@@ -30,39 +99,86 @@ export default function ContactUsPage() {
                   Fill out the form below and we'll get back to you as soon as possible.
                 </p>
               </div>
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">Full Name</Label>
-                    <Input id="name" placeholder="e.g., John Doe" />
+              <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <FormField
+                      control={form.control}
+                      name="name"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Full Name</FormLabel>
+                          <FormControl>
+                            <Input placeholder="e.g., John Doe" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Email Address</FormLabel>
+                          <FormControl>
+                            <Input type="email" placeholder="you@example.com" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
                   </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email Address</Label>
-                    <Input id="email" type="email" placeholder="you@example.com" />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="subject">Subject</Label>
-                  <Input id="subject" placeholder="e.g., Inquiry about Fahm" />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="message">Message</Label>
-                  <Textarea
-                    id="message"
-                    placeholder="Your message here..."
-                    className="min-h-[120px] resize-y"
+                  <FormField
+                    control={form.control}
+                    name="subject"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Subject</FormLabel>
+                        <FormControl>
+                          <Input placeholder="e.g., Inquiry about Fahm" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
                   />
-                </div>
-                <div className="pt-2">
-                  <Button type="submit" className="w-full sm:w-auto" disabled>
-                    <Send className="mr-2 h-4 w-4" />
-                    Send Message (Coming Soon)
-                  </Button>
-                </div>
-                <p className="text-xs text-muted-foreground text-center pt-2">
-                  Please note: Form submission functionality will be available soon.
-                </p>
-              </form>
+                  <FormField
+                    control={form.control}
+                    name="message"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Message</FormLabel>
+                        <FormControl>
+                          <Textarea
+                            placeholder="Your message here..."
+                            className="min-h-[120px] resize-y"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <div className="pt-2">
+                    <Button type="submit" className="w-full sm:w-auto" disabled={isSubmitting}>
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          <Send className="mr-2 h-4 w-4" />
+                          Send Message
+                        </>
+                      )}
+                    </Button>
+                  </div>
+                   <p className="text-xs text-muted-foreground text-center pt-2">
+                     Note: For demonstration, messages are logged to the server console.
+                   </p>
+                </form>
+              </Form>
             </div>
 
             {/* Right Column: Feedback & Ratings */}
@@ -143,3 +259,5 @@ export default function ContactUsPage() {
     </div>
   );
 }
+
+    
