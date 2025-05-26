@@ -47,7 +47,7 @@ export default function TeamPage() {
         <Card className="shadow-lg">
           <CardContent className="py-12 text-center">
             <p className="text-xl text-muted-foreground">
-              will be updated
+              will be updated soon
             </p>
           </CardContent>
         </Card>
