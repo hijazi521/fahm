@@ -1,12 +1,13 @@
 
 import Link from 'next/link';
-import { BookOpen, Users, LayoutGrid, Handshake } from 'lucide-react';
+import { BookOpen, Users, LayoutGrid, Handshake, Mail } from 'lucide-react';
 
 const navItems = [
   { href: '/publishments', label: 'Publishments', icon: <LayoutGrid className="h-5 w-5" /> },
   { href: '/mission', label: 'Mission', icon: <BookOpen className="h-5 w-5" /> },
   { href: '/team', label: 'Team', icon: <Users className="h-5 w-5" /> },
   { href: '/partners', label: 'Partners', icon: <Handshake className="h-5 w-5" /> },
+  { href: '/contact', label: 'Contact Us', icon: <Mail className="h-5 w-5" /> },
 ];
 
 export function Header() {
@@ -17,12 +18,12 @@ export function Header() {
           <Link href="/" className="text-2xl font-bold text-primary hover:text-accent transition-colors" aria-label="Fahm Homepage">
             Fahm
           </Link>
-          <nav className="flex items-center space-x-2 sm:space-x-4">
+          <nav className="flex items-center space-x-1 sm:space-x-2">
             {navItems.map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
-                className="flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+                className="flex items-center space-x-2 px-2 sm:px-3 py-2 rounded-md text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
                 aria-label={item.label}
               >
                 {item.icon}
