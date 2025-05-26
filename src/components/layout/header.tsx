@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { BookOpen, Users, Briefcase, LayoutGrid, Handshake } from 'lucide-react'; // Added LayoutGrid for logo placeholder
+import { BookOpen, Users, LayoutGrid, Handshake } from 'lucide-react';
 
 const navItems = [
   { href: '/', label: 'Research', icon: <LayoutGrid className="h-5 w-5" /> },
@@ -13,7 +13,7 @@ export function Header() {
     <header className="bg-card border-b border-border sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className="text-2xl font-bold text-primary hover:text-accent transition-colors">
+          <Link href="/" className="text-2xl font-bold text-primary hover:text-accent transition-colors" aria-label="Fahm Homepage">
             Fahm
           </Link>
           <nav className="flex items-center space-x-2 sm:space-x-4">
