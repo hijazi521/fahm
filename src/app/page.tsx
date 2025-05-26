@@ -47,7 +47,7 @@ export default function HomePage() {
         </p>
         <Button asChild size="lg" className="mt-8 bg-accent text-accent-foreground hover:bg-accent/90">
           <Link href="/publishments">
-            Explore Publishments <ArrowRight className="ml-2 h-5 w-5" />
+            View Publishments <ArrowRight className="ml-2 h-5 w-5" />
           </Link>
         </Button>
       </section>
