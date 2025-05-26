@@ -3,8 +3,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRight, BookOpen, Users, Handshake, LayoutGrid } from 'lucide-react';
-import { ArticleCard } from '@/components/research/article-card';
-import { DUMMY_ARTICLES } from '@/lib/constants';
+// ArticleCard and DUMMY_ARTICLES are no longer needed here as recent uploads are replaced by a message.
 
 const featuredSections = [
   {
@@ -34,7 +33,7 @@ const featuredSections = [
 ];
 
 export default function HomePage() {
-  const recentArticles = DUMMY_ARTICLES.slice(0, 3); // Show the first 3 articles
+  // const recentArticles = DUMMY_ARTICLES.slice(0, 3); // No longer needed
 
   return (
     <div className="space-y-16">
@@ -85,24 +84,13 @@ export default function HomePage() {
         <h2 className="text-3xl font-semibold text-center mb-8 text-primary">
           Recent Uploads
         </h2>
-        {recentArticles.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {recentArticles.map((article) => (
-              <ArticleCard key={article.id} article={article} />
-            ))}
-          </div>
-        ) : (
-          <p className="text-center text-muted-foreground">No recent articles to display.</p>
-        )}
-        {DUMMY_ARTICLES.length > 3 && (
-          <div className="text-center mt-8">
-            <Button asChild variant="ghost">
-              <Link href="/publishments">
-                View All Publishments <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-          </div>
-        )}
+        <Card className="shadow-lg">
+          <CardContent className="py-8 text-center">
+            <p className="text-xl text-muted-foreground">
+              Going to be released soon
+            </p>
+          </CardContent>
+        </Card>
       </section>
     </div>
   );
