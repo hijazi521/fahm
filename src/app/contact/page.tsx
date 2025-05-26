@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Send } from "lucide-react";
+import { Mail, Send, Instagram, Linkedin, Twitter } from "lucide-react"; // Added Instagram, Linkedin, Twitter
 
 export default function ContactUsPage() {
   return (
@@ -68,6 +68,42 @@ export default function ContactUsPage() {
         </p>
         <p className="text-accent mt-2">
           contact@fahm.example.com (This is a placeholder email)
+        </p>
+      </section>
+
+      <section className="text-center py-6 border-t border-border">
+        <h2 className="text-2xl font-semibold text-primary mb-6">Follow Us</h2>
+        <div className="flex justify-center space-x-6">
+          <a
+            href="#" // Replace with your actual Instagram link
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted-foreground hover:text-accent transition-colors"
+            aria-label="Fahm on Instagram"
+          >
+            <Instagram className="h-8 w-8" />
+          </a>
+          <a
+            href="#" // Replace with your actual Twitter/X link
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted-foreground hover:text-accent transition-colors"
+            aria-label="Fahm on Twitter"
+          >
+            <Twitter className="h-8 w-8" />
+          </a>
+          <a
+            href="#" // Replace with your actual LinkedIn link
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted-foreground hover:text-accent transition-colors"
+            aria-label="Fahm on LinkedIn"
+          >
+            <Linkedin className="h-8 w-8" />
+          </a>
+        </div>
+        <p className="text-xs text-muted-foreground mt-4">
+          (Social media links are placeholders)
         </p>
       </section>
     </div>
