@@ -1,8 +1,9 @@
+
 import Link from 'next/link';
 import { BookOpen, Users, LayoutGrid, Handshake } from 'lucide-react';
 
 const navItems = [
-  { href: '/', label: 'Publishments', icon: <LayoutGrid className="h-5 w-5" /> },
+  { href: '/publishments', label: 'Publishments', icon: <LayoutGrid className="h-5 w-5" /> },
   { href: '/mission', label: 'Mission', icon: <BookOpen className="h-5 w-5" /> },
   { href: '/team', label: 'Team', icon: <Users className="h-5 w-5" /> },
   { href: '/partners', label: 'Partners', icon: <Handshake className="h-5 w-5" /> },
