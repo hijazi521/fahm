@@ -19,17 +19,24 @@ export default function PartnersPage() {
       </section>
 
       <section className="py-8">
-        <h2 className="text-3xl font-semibold text-center mb-8 text-primary">Official Partners</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
+        <h2 className="text-4xl font-semibold text-center mb-10 text-primary">Official Partners</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 items-center">
           {[
             { name: "Tech University", hint: "university logo" },
             { name: "Innovate Labs", hint: "research lab" },
             { name: "Global Research Institute", hint: "institute building" },
             { name: "Science Foundation", hint: "foundation emblem" },
           ].map((partner, index) => (
-            <div key={index} className="flex flex-col items-center text-center p-4 rounded-lg bg-card hover:shadow-md transition-shadow">
-              <Image src={`https://placehold.co/150x80.png`} alt={partner.name} width={120} height={60} data-ai-hint={partner.hint} className="mb-2 filter grayscale hover:grayscale-0 transition-all" />
-              <p className="text-sm font-medium text-muted-foreground">{partner.name}</p>
+            <div key={index} className="flex flex-col items-center text-center p-6 rounded-lg bg-card hover:shadow-lg transition-shadow transform hover:scale-105">
+              <Image 
+                src={`https://placehold.co/200x100.png`} 
+                alt={partner.name} 
+                width={180} 
+                height={90} 
+                data-ai-hint={partner.hint} 
+                className="mb-4 filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out" 
+              />
+              <p className="text-md font-medium text-muted-foreground">{partner.name}</p>
             </div>
           ))}
         </div>
