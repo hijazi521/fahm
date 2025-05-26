@@ -21,9 +21,9 @@ export default function ContactUsPage() {
 
       <Card className="max-w-5xl mx-auto shadow-xl">
         <CardContent className="p-6 md:p-8">
-          <div className="grid md:grid-cols-2 gap-x-8 lg:gap-x-12">
+          <div className="grid md:grid-cols-2 gap-x-0 lg:gap-x-0"> {/* Adjusted gap for border */}
             {/* Left Column: Send Message */}
-            <div className="space-y-6">
+            <div className="space-y-6 md:border-r md:border-border md:pr-8 lg:md:pr-12">
               <div>
                 <h2 className="text-2xl font-semibold text-primary">Send us a Message</h2>
                 <p className="text-muted-foreground mt-1">
@@ -66,7 +66,7 @@ export default function ContactUsPage() {
             </div>
 
             {/* Right Column: Feedback & Ratings */}
-            <div className="space-y-6 mt-8 md:mt-0">
+            <div className="space-y-6 mt-8 md:mt-0 md:pl-8 lg:md:pl-12">
               <div>
                 <h2 className="text-2xl font-semibold text-primary">Feedback & Ratings</h2>
                 <p className="text-muted-foreground mt-1">
@@ -80,7 +80,7 @@ export default function ContactUsPage() {
                     id="feedback-message"
                     placeholder="Share your thoughts, suggestions, or report an issue..."
                     className="min-h-[120px] resize-y"
-                    disabled 
+                    disabled
                   />
                 </div>
                 <div className="space-y-2">
@@ -112,7 +112,7 @@ export default function ContactUsPage() {
         <h2 className="text-2xl font-semibold text-primary mb-6">Follow Us</h2>
         <div className="flex justify-center space-x-6">
           <a
-            href="https://www.instagram.com/fahmsite/" 
+            href="https://www.instagram.com/fahmsite/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-accent transition-colors"
