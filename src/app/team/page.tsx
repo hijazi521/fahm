@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { DUMMY_TEAM_MEMBERS, type TeamMember } from "@/lib/constants";
 import Image from "next/image";
@@ -5,7 +6,7 @@ import { Users } from "lucide-react";
 
 function TeamMemberCard({ member }: { member: TeamMember }) {
   return (
-    <Card className="text-center shadow-lg hover:shadow-xl transition-shadow duration-300 bg-card">
+    <Card className="text-center shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out hover:scale-105 hover:-translate-y-1 bg-card">
       <CardHeader className="items-center">
         <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-accent mb-4">
           <Image
@@ -47,3 +48,4 @@ export default function TeamPage() {
     </div>
   );
 }
+
