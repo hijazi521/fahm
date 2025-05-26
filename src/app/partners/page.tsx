@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -15,6 +16,23 @@ export default function PartnersPage() {
         <p className="mt-3 text-base text-muted-foreground sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:text-xl">
           Collaborating with leading institutions to drive innovation and disseminate knowledge.
         </p>
+      </section>
+
+      <section className="py-8">
+        <h2 className="text-3xl font-semibold text-center mb-8 text-primary">Official Partners</h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
+          {[
+            { name: "Tech University", hint: "university logo" },
+            { name: "Innovate Labs", hint: "research lab" },
+            { name: "Global Research Institute", hint: "institute building" },
+            { name: "Science Foundation", hint: "foundation emblem" },
+          ].map((partner, index) => (
+            <div key={index} className="flex flex-col items-center text-center p-4 rounded-lg bg-card hover:shadow-md transition-shadow">
+              <Image src={`https://placehold.co/150x80.png`} alt={partner.name} width={120} height={60} data-ai-hint={partner.hint} className="mb-2 filter grayscale hover:grayscale-0 transition-all" />
+              <p className="text-sm font-medium text-muted-foreground">{partner.name}</p>
+            </div>
+          ))}
+        </div>
       </section>
 
       <Card className="shadow-lg">
@@ -51,23 +69,6 @@ export default function PartnersPage() {
           </Button>
         </CardFooter>
       </Card>
-
-      <section className="py-8">
-        <h2 className="text-3xl font-semibold text-center mb-8 text-primary">Official Partners</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
-          {[
-            { name: "Tech University", hint: "university logo" },
-            { name: "Innovate Labs", hint: "research lab" },
-            { name: "Global Research Institute", hint: "institute building" },
-            { name: "Science Foundation", hint: "foundation emblem" },
-          ].map((partner, index) => (
-            <div key={index} className="flex flex-col items-center text-center p-4 rounded-lg bg-card hover:shadow-md transition-shadow">
-              <Image src={`https://placehold.co/150x80.png`} alt={partner.name} width={120} height={60} data-ai-hint={partner.hint} className="mb-2 filter grayscale hover:grayscale-0 transition-all" />
-              <p className="text-sm font-medium text-muted-foreground">{partner.name}</p>
-            </div>
-          ))}
-        </div>
-      </section>
     </div>
   );
 }
