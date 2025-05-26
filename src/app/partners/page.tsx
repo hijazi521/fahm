@@ -20,32 +20,13 @@ export default function PartnersPage() {
 
       <section className="py-8">
         <h2 className="text-3xl sm:text-4xl font-semibold text-center mb-12 text-primary">Official Partners</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
-          {[
-            { name: "Tech University", hint: "university logo" },
-            { name: "Innovate Labs", hint: "research lab" },
-            { name: "Global Research Institute", hint: "institute building" },
-            { name: "Science Foundation", hint: "foundation emblem" },
-            // Add more official partners here if needed
-          ].map((partner, index) => (
-            <Card 
-              key={index} 
-              className="flex flex-col items-center text-center p-6 rounded-lg bg-card hover:shadow-xl transition-all duration-300 ease-in-out transform hover:scale-105"
-            >
-              <div className="relative w-40 h-20 sm:w-48 sm:h-24 mb-6">
-                <Image 
-                  src={`https://placehold.co/300x150.png`} 
-                  alt={partner.name} 
-                  layout="fill"
-                  objectFit="contain"
-                  data-ai-hint={partner.hint} 
-                  className="filter grayscale group-hover:grayscale-0 transition-all duration-300 ease-in-out" 
-                />
-              </div>
-              <p className="text-lg sm:text-xl font-medium text-foreground">{partner.name}</p>
-            </Card>
-          ))}
-        </div>
+        <Card className="shadow-md">
+          <CardContent className="py-10 text-center">
+            <p className="text-xl text-muted-foreground">
+              Collaborations coming soon
+            </p>
+          </CardContent>
+        </Card>
       </section>
 
       <Card className="shadow-lg mt-16">
