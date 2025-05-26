@@ -11,7 +11,7 @@ export default function MissionPage() {
           Our Mission
         </h1>
         <p className="mt-3 text-base text-muted-foreground sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:text-xl">
-          Democratizing access to knowledge and fostering innovation.
+          A small summary of our ambitions
         </p>
       </section>
 
