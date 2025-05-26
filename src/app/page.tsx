@@ -1,15 +1,15 @@
 import { ArticleCard } from '@/components/research/article-card';
 import { DUMMY_ARTICLES } from '@/lib/constants';
 
-export default function ResearchPage() {
+export default function PublishmentsPage() {
   return (
     <div className="space-y-8">
       <section className="text-center py-8">
         <h1 className="text-4xl font-bold tracking-tight text-primary sm:text-5xl md:text-6xl">
-          Recently Published
+          Publishments
         </h1>
         <p className="mt-3 text-base text-muted-foreground sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl">
-          Explore groundbreaking papers and articles, summarized by cutting-edge AI.
+          Explore our collection of groundbreaking papers and articles.
         </p>
       </section>
 
