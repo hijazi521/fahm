@@ -61,16 +61,6 @@ export default function ContactUsPage() {
         </CardContent>
       </Card>
 
-      <section className="text-center py-6">
-        <h2 className="text-2xl font-semibold text-primary mb-4">Other Ways to Reach Us</h2>
-        <p className="text-muted-foreground">
-          For urgent matters, you can also contact us at:
-        </p>
-        <p className="text-accent mt-2">
-          contact@fahm.example.com (This is a placeholder email)
-        </p>
-      </section>
-
       <section className="text-center py-6 border-t border-border">
         <h2 className="text-2xl font-semibold text-primary mb-6">Follow Us</h2>
         <div className="flex justify-center space-x-6">
