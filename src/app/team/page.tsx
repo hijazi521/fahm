@@ -39,7 +39,7 @@ export default function TeamPage() {
           Meet Our Team
         </h1>
         <p className="mt-3 text-base text-muted-foreground sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:text-xl">
-          Fahm is powered by a dedicated team of researchers, engineers, and designers passionate about advancing knowledge and making complex information accessible to all.
+          The team behind this project helping students all over the world. The team that is working day and night to bring the best result possible.
         </p>
       </section>
 
