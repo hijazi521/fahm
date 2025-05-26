@@ -8,7 +8,7 @@ import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label"; // Kept for feedback section
+import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
@@ -54,8 +54,8 @@ export default function ContactUsPage() {
       const result = await handleContactFormSubmission(values);
       if (result.success) {
         toast({
-          title: "Message Sent!",
-          description: "Thank you for contacting us. We have received your message (logged to console).",
+          title: result.message || "Message Sent!",
+          description: result.message ? "" : "Thank you for contacting us.",
         });
         form.reset();
       } else {
@@ -90,8 +90,7 @@ export default function ContactUsPage() {
 
       <Card className="max-w-5xl mx-auto shadow-xl">
         <CardContent className="p-6 md:p-8">
-          <div className="grid md:grid-cols-2 gap-x-0 lg:gap-x-0"> {/* Adjusted gap for border */}
-            {/* Left Column: Send Message */}
+          <div className="grid md:grid-cols-2 gap-x-0 lg:gap-x-0">
             <div className="space-y-6 md:border-r md:border-border md:pr-8 lg:md:pr-12">
               <div>
                 <h2 className="text-2xl font-semibold text-primary">Send us a Message</h2>
@@ -175,13 +174,12 @@ export default function ContactUsPage() {
                     </Button>
                   </div>
                    <p className="text-xs text-muted-foreground text-center pt-2">
-                     Note: For demonstration, messages are logged to the server console.
+                     If email sending is not configured, messages are logged to the server console.
                    </p>
                 </form>
               </Form>
             </div>
 
-            {/* Right Column: Feedback & Ratings */}
             <div className="space-y-6 mt-8 md:mt-0 md:pl-8 lg:md:pl-12">
               <div>
                 <h2 className="text-2xl font-semibold text-primary">Feedback & Ratings</h2>
@@ -259,5 +257,3 @@ export default function ContactUsPage() {
     </div>
   );
 }
-
-    
