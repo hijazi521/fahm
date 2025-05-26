@@ -65,8 +65,8 @@ export function PartnerProgramForm() {
       const result = await handlePartnerFormSubmission(values);
       if (result.success) {
         toast({
-          title: 'Application Submitted!',
-          description: 'Thank you for your interest. We will be in touch soon.',
+          title: result.message || 'Application Submitted!',
+          description: result.message ? "" : 'Thank you for your interest. We will be in touch soon.',
         });
         form.reset();
       } else {
@@ -184,7 +184,11 @@ export function PartnerProgramForm() {
             'Submit Application'
           )}
         </Button>
+         <p className="text-xs text-muted-foreground text-center pt-1">
+            If email sending is not configured, applications are logged to the server console.
+        </p>
       </form>
     </Form>
   );
 }
+
