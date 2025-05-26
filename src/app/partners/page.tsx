@@ -53,7 +53,7 @@ export default function PartnersPage() {
       </Card>
 
       <section className="py-8">
-        <h2 className="text-3xl font-semibold text-center mb-8 text-primary">Featured Partners</h2>
+        <h2 className="text-3xl font-semibold text-center mb-8 text-primary">Official Partners</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
           {[
             { name: "Tech University", hint: "university logo" },
