@@ -44,7 +44,7 @@ export default function HomePage() {
           Welcome to Fahm
         </h1>
         <p className="mt-6 text-lg text-muted-foreground sm:text-xl sm:max-w-2xl sm:mx-auto md:text-2xl">
-          Your gateway to accessible research and insightful discoveries.
+          Explore articles and reports written exclusively by students
         </p>
         <Button asChild size="lg" className="mt-8 bg-accent text-accent-foreground hover:bg-accent/90">
           <Link href="/publishments">
