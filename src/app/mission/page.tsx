@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 import { Target } from "lucide-react";
@@ -23,13 +24,13 @@ export default function MissionPage() {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <p>
-                At Fahm, our mission is to democratize access to cutting-edge research and foster a global community of learners and innovators. We believe that knowledge should be open, accessible, and easily understandable for everyone, everywhere.
+                Fahm is a unique, student exclusive platform dedicated to empowering young minds by providing them with a professional space to publish their work, ranging from research papers and articles to opinion pieces across a wide range of fields, including medicine, social issues, economics, and more. As a non-profit initiative, Fahm operates at no cost to its users, ensuring that financial limitations never become a barrier to academic expression and recognition.
               </p>
               <p className="mt-4">
-                We strive to break down the barriers that traditionally limit the reach of academic and scientific discoveries. By leveraging advanced AI technologies, we aim to make complex information digestible and engaging, empowering individuals to learn, create, and solve the world's most pressing challenges.
+                Our mission is to offer students a trusted and credible outlet where they can showcase their research on modern and pressing global issues, gaining valuable recognition and credibility in academic and professional spaces.
               </p>
               <p className="mt-4">
-                Our platform is built on the principles of clarity, integrity, and collaboration. We are committed to providing a space where ideas can flourish, discussions can thrive, and the collective pursuit of knowledge can advance humanity.
+                Behind Fahm is an amazing and supportive team committed to guiding students through the publication process, along with experienced advisors who play an essential role in maintaining quality and integrity. In addition to publishing student work, Fahm will also be releasing its own in-house research and publications, contributing actively to the global pool of knowledge and sparking further conversation and inquiry.
               </p>
             </div>
             <div className="relative aspect-video rounded-lg overflow-hidden">
