@@ -44,36 +44,20 @@ export default function PartnersPage() {
 
       <Card className="shadow-lg">
         <CardHeader>
-          <CardTitle className="text-2xl">Stronger Together</CardTitle>
+          <CardTitle className="text-2xl text-center">Future Collaborations</CardTitle>
         </CardHeader>
-        <CardContent className="space-y-6 text-lg leading-relaxed text-foreground/90">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <p>
-                We collaborate with leading institutions, universities, and research organizations to bring you the highest quality insights. Our partners share our commitment to open access and the ethical dissemination of knowledge.
-              </p>
-              <p className="mt-4">
-                Through these collaborations, we aim to amplify the impact of research, foster interdisciplinary connections, and support the growth of a vibrant global academic community. We are always open to exploring new partnerships that align with our mission.
-              </p>
-            </div>
-            <div className="relative aspect-video rounded-lg overflow-hidden">
-              <Image
-                src="https://placehold.co/600x400.png"
-                alt="Global network of partners"
-                layout="fill"
-                objectFit="cover"
-                data-ai-hint="global network"
-              />
-            </div>
-          </div>
+        <CardContent className="text-center py-8">
+          <p className="text-xl text-muted-foreground">
+            Collaborations coming soon
+          </p>
         </CardContent>
         <CardFooter className="justify-center pt-6">
-          <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
-            <Link href="/partners/join">
-              Join Our Partner Program
-              <ExternalLink className="ml-2 h-5 w-5" />
-            </Link>
-          </Button>
+            <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
+                <Link href="/partners/join">
+                Become a Partner
+                <ExternalLink className="ml-2 h-5 w-5" />
+                </Link>
+            </Button>
         </CardFooter>
       </Card>
     </div>
