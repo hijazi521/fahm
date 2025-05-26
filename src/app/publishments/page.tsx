@@ -1,11 +1,12 @@
 
-import { ArticleCard } from '@/components/research/article-card';
-import { DUMMY_ARTICLES } from '@/lib/constants';
+import { Card, CardContent } from '@/components/ui/card';
+import { LayoutGrid } from 'lucide-react';
 
 export default function PublishmentsPage() {
   return (
     <div className="space-y-8">
       <section className="text-center py-8">
+        <LayoutGrid className="mx-auto h-16 w-16 text-accent mb-4" />
         <h1 className="text-4xl font-bold tracking-tight text-primary sm:text-5xl md:text-6xl">
           Publishments
         </h1>
@@ -15,11 +16,13 @@ export default function PublishmentsPage() {
       </section>
 
       <section>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {DUMMY_ARTICLES.map((article) => (
-            <ArticleCard key={article.id} article={article} />
-          ))}
-        </div>
+        <Card className="shadow-lg">
+          <CardContent className="py-12 text-center">
+            <p className="text-xl text-muted-foreground">
+              Going to be released soon
+            </p>
+          </CardContent>
+        </Card>
       </section>
     </div>
   );
