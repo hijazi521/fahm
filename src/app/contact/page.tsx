@@ -92,9 +92,6 @@ export default function ContactUsPage() {
             <Linkedin className="h-8 w-8" />
           </a>
         </div>
-        <p className="text-xs text-muted-foreground mt-4">
-          (Social media links are placeholders)
-        </p>
       </section>
     </div>
   );
