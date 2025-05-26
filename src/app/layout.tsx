@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Fahm Insights',
+  title: 'Fahm',
   description: 'Research papers and articles, summarized by AI.',
 };
 

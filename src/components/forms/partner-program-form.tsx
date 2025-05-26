@@ -161,7 +161,7 @@ export function PartnerProgramForm() {
               <FormLabel>Partnership Interest</FormLabel>
               <FormControl>
                 <Textarea
-                  placeholder="Briefly describe why you're interested in partnering with Fahm Insights, potential areas of collaboration, etc."
+                  placeholder="Briefly describe why you're interested in partnering with Fahm, potential areas of collaboration, etc."
                   className="resize-y min-h-[100px]"
                   {...field}
                 />

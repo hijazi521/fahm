@@ -14,7 +14,7 @@ export function Header() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="text-2xl font-bold text-primary hover:text-accent transition-colors">
-            Fahm Insights
+            Fahm
           </Link>
           <nav className="flex items-center space-x-2 sm:space-x-4">
             {navItems.map((item) => (

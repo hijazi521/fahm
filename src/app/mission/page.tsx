@@ -23,7 +23,7 @@ export default function MissionPage() {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <p>
-                At Fahm Insights, our mission is to democratize access to cutting-edge research and foster a global community of learners and innovators. We believe that knowledge should be open, accessible, and easily understandable for everyone, everywhere.
+                At Fahm, our mission is to democratize access to cutting-edge research and foster a global community of learners and innovators. We believe that knowledge should be open, accessible, and easily understandable for everyone, everywhere.
               </p>
               <p className="mt-4">
                 We strive to break down the barriers that traditionally limit the reach of academic and scientific discoveries. By leveraging advanced AI technologies, we aim to make complex information digestible and engaging, empowering individuals to learn, create, and solve the world's most pressing challenges.
