@@ -112,7 +112,7 @@ export default function ContactUsPage() {
         <h2 className="text-2xl font-semibold text-primary mb-6">Follow Us</h2>
         <div className="flex justify-center space-x-6">
           <a
-            href="#" // Replace with your actual Instagram link
+            href="https://www.instagram.com/fahmsite/" 
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-accent transition-colors"
