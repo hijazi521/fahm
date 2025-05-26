@@ -1,31 +1,34 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { DUMMY_TEAM_MEMBERS, type TeamMember } from "@/lib/constants";
-import Image from "next/image";
+// Removed DUMMY_TEAM_MEMBERS and TeamMember type import
+// import { DUMMY_TEAM_MEMBERS, type TeamMember } from "@/lib/constants";
+// Removed Image import as TeamMemberCard is removed
+// import Image from "next/image";
 import { Users } from "lucide-react";
 
-function TeamMemberCard({ member }: { member: TeamMember }) {
-  return (
-    <Card className="text-center shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out hover:scale-105 hover:-translate-y-1 bg-card">
-      <CardHeader className="items-center">
-        <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-accent mb-4">
-          <Image
-            src={member.imageUrl}
-            alt={member.name}
-            layout="fill"
-            objectFit="cover"
-            data-ai-hint={member.imageHint}
-          />
-        </div>
-        <CardTitle className="text-xl">{member.name}</CardTitle>
-        <CardDescription className="text-accent">{member.role}</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <p className="text-sm text-foreground/80">{member.bio}</p>
-      </CardContent>
-    </Card>
-  );
-}
+// Removed TeamMemberCard component as it's no longer used
+// function TeamMemberCard({ member }: { member: TeamMember }) {
+//   return (
+//     <Card className="text-center shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out hover:scale-105 hover:-translate-y-1 bg-card">
+//       <CardHeader className="items-center">
+//         <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-accent mb-4">
+//           <Image
+//             src={member.imageUrl}
+//             alt={member.name}
+//             layout="fill"
+//             objectFit="cover"
+//             data-ai-hint={member.imageHint}
+//           />
+//         </div>
+//         <CardTitle className="text-xl">{member.name}</CardTitle>
+//         <CardDescription className="text-accent">{member.role}</CardDescription>
+//       </CardHeader>
+//       <CardContent>
+//         <p className="text-sm text-foreground/80">{member.bio}</p>
+//       </CardContent>
+//     </Card>
+//   );
+// }
 
 export default function TeamPage() {
   return (
@@ -40,12 +43,15 @@ export default function TeamPage() {
         </p>
       </section>
 
-      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {DUMMY_TEAM_MEMBERS.map((member) => (
-          <TeamMemberCard key={member.id} member={member} />
-        ))}
+      <section>
+        <Card className="shadow-lg">
+          <CardContent className="py-12 text-center">
+            <p className="text-xl text-muted-foreground">
+              will be updated
+            </p>
+          </CardContent>
+        </Card>
       </section>
     </div>
   );
 }
-
