@@ -55,20 +55,21 @@ export default function ContactUsPage() {
       if (result.success) {
         toast({
           title: result.message || "Message Sent!",
-          description: result.message ? "" : "Thank you for contacting us.",
+          description: result.message?.includes("logged") ? "Email sending is not fully configured on the server." : "Thank you for contacting us.",
         });
         form.reset();
       } else {
         toast({
           title: "Submission Failed",
-          description: result.error || "An unexpected error occurred. Please try again.",
+          description: (result.error || "An unexpected error occurred.") + " If email sending is configured, please check server logs for more details.",
           variant: "destructive",
         });
       }
     } catch (error) {
+      console.error("Contact form submission client-side error:", error);
       toast({
         title: "Submission Error",
-        description: "An error occurred while submitting the form. Please try again later.",
+        description: "An unexpected error occurred while submitting the form. Please try again later. Check server logs for details if the issue persists.",
         variant: "destructive",
       });
     } finally {
