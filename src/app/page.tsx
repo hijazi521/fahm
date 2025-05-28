@@ -51,7 +51,7 @@ export default function HomePage() {
             aria-label="Fahm on Instagram"
           >
             <Link href="https://www.instagram.com/fahmsite/" target="_blank" rel="noopener noreferrer">
-              <Instagram className="h-7 w-7" />
+              <Instagram className="h-8 w-8" />
             </Link>
           </Button>
           <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
