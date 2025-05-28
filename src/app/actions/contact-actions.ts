@@ -20,7 +20,7 @@ export async function handleContactFormSubmission(
   const validationResult = contactFormSchema.safeParse(values);
   if (!validationResult.success) {
     console.error('Server-side validation failed:', validationResult.error.flatten().fieldErrors);
-    return { success: false, error: 'Invalid form data received.' };
+    return { success: false, error: 'Invalid form data received. Check server logs for details.' };
   }
 
   const { name, email, subject, message } = validationResult.data;
@@ -32,13 +32,10 @@ export async function handleContactFormSubmission(
   console.log('Subject:', subject);
   console.log('Message:', message);
 
-  // Ensure RESEND_API_KEY is set in your environment variables (e.g., .env.local or hosting provider settings)
-  // Also, ensure you have a verified sending domain with Resend.
   const resendApiKey = process.env.RESEND_API_KEY;
 
   if (!resendApiKey) {
     console.warn('RESEND_API_KEY is not set. Email will not be sent. Message logged to console. Ensure Resend is configured with an API key and verified domain for email sending to work.');
-    // Simulate success for UI purposes if API key is missing, but provide a specific message.
     await new Promise(resolve => setTimeout(resolve, 1000));
     return { success: true, message: "Message logged (email sending not configured)." };
   }
@@ -78,6 +75,6 @@ export async function handleContactFormSubmission(
   } catch (error) {
     console.error('Email sending failed via Resend:', error);
     // It's good practice to not expose detailed error messages to the client.
-    return { success: false, error: 'Failed to send message. Please try again later.' };
+    return { success: false, error: 'Failed to send message. Please try again later. Check server logs for details.' };
   }
 }

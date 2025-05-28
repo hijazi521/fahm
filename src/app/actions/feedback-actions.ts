@@ -21,7 +21,7 @@ export async function handleFeedbackSubmission(
   const validationResult = feedbackFormSchema.safeParse(values);
   if (!validationResult.success) {
     console.error('Server-side validation failed for feedback form:', validationResult.error.flatten().fieldErrors);
-    return { success: false, error: 'Invalid form data received for feedback.' };
+    return { success: false, error: 'Invalid form data received for feedback. Check server logs for details.' };
   }
 
   const { feedbackMessage, rating } = validationResult.data;
