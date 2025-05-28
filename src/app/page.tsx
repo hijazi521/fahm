@@ -45,7 +45,7 @@ export default function HomePage() {
         <div className="mt-8 flex justify-center items-center space-x-4">
           <Button
             asChild
-            size="lg"
+            size="icon"
             variant="outline"
             className="border-accent text-accent hover:bg-accent/10"
             aria-label="Fahm on Instagram"
