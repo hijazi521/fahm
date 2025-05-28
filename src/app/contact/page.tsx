@@ -10,10 +10,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, Send, Instagram, Linkedin, Twitter, Star, Loader2 } from "lucide-react";
 import { handleContactFormSubmission } from "@/app/actions/contact-actions";
+import { handleFeedbackSubmission, type FeedbackFormValues as FeedbackFormSchemaValues } from "@/app/actions/feedback-actions"; // Renamed to avoid conflict
+import { cn } from "@/lib/utils";
 
 const contactFormSchema = z.object({
   name: z.string().min(2, {
@@ -34,11 +36,22 @@ const contactFormSchema = z.object({
 
 type ContactFormValues = z.infer<typeof contactFormSchema>;
 
+// Schema for feedback form (can be simpler as it's defined in actions too)
+const clientFeedbackFormSchema = z.object({
+  feedbackMessage: z.string().min(10, { message: "Feedback must be at least 10 characters." }).max(2000),
+  rating: z.number().min(1).max(5).optional().nullable(),
+});
+// Type for client-side feedback form values
+type FeedbackFormValues = z.infer<typeof clientFeedbackFormSchema>;
+
+
 export default function ContactUsPage() {
   const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmittingContact, setIsSubmittingContact] = useState(false);
+  const [isSubmittingFeedback, setIsSubmittingFeedback] = useState(false);
+  const [currentRating, setCurrentRating] = useState<number | null>(null);
 
-  const form = useForm<ContactFormValues>({
+  const contactForm = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
     defaultValues: {
       name: "",
@@ -48,16 +61,24 @@ export default function ContactUsPage() {
     },
   });
 
-  async function onSubmit(values: ContactFormValues) {
-    setIsSubmitting(true);
+  const feedbackForm = useForm<FeedbackFormValues>({
+    resolver: zodResolver(clientFeedbackFormSchema),
+    defaultValues: {
+      feedbackMessage: "",
+      rating: null,
+    },
+  });
+
+  async function onContactSubmit(values: ContactFormValues) {
+    setIsSubmittingContact(true);
     try {
       const result = await handleContactFormSubmission(values);
       if (result.success) {
         toast({
           title: result.message || "Message Sent!",
-          description: result.message?.includes("logged") ? "Email sending is not fully configured on the server." : "Thank you for contacting us.",
+          description: result.message?.includes("logged") ? "Email sending may not be fully configured on the server." : "Thank you for contacting us.",
         });
-        form.reset();
+        contactForm.reset();
       } else {
         toast({
           title: "Submission Failed",
@@ -69,11 +90,46 @@ export default function ContactUsPage() {
       console.error("Contact form submission client-side error:", error);
       toast({
         title: "Submission Error",
-        description: "An unexpected error occurred while submitting the form. Please try again later. Check server logs for details if the issue persists.",
+        description: "An unexpected error occurred while submitting the contact form. Please try again later. Check server logs for details if the issue persists.",
         variant: "destructive",
       });
     } finally {
-      setIsSubmitting(false);
+      setIsSubmittingContact(false);
+    }
+  }
+
+  async function onFeedbackSubmit(values: FeedbackFormValues) {
+    setIsSubmittingFeedback(true);
+    const submissionValues: FeedbackFormSchemaValues = {
+      feedbackMessage: values.feedbackMessage,
+      rating: currentRating,
+    };
+
+    try {
+      const result = await handleFeedbackSubmission(submissionValues);
+      if (result.success) {
+        toast({
+          title: result.message || "Feedback Submitted!",
+          description: result.message?.includes("logged") ? "Email sending may not be fully configured on the server." : "Thank you for your feedback.",
+        });
+        feedbackForm.reset();
+        setCurrentRating(null);
+      } else {
+        toast({
+          title: "Feedback Submission Failed",
+          description: (result.error || "An unexpected error occurred.") + " If email sending is configured, please check server logs for details.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.error("Feedback form submission client-side error:", error);
+      toast({
+        title: "Feedback Submission Error",
+        description: "An unexpected error occurred while submitting feedback. Please try again later. Check server logs for details if issue persists.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmittingFeedback(false);
     }
   }
 
@@ -92,6 +148,7 @@ export default function ContactUsPage() {
       <Card className="max-w-5xl mx-auto shadow-xl">
         <CardContent className="p-6 md:p-8">
           <div className="grid md:grid-cols-2 gap-x-0 lg:gap-x-0">
+            {/* Contact Form Section */}
             <div className="space-y-6 md:border-r md:border-border md:pr-8 lg:md:pr-12">
               <div>
                 <h2 className="text-2xl font-semibold text-primary">Send us a Message</h2>
@@ -99,11 +156,11 @@ export default function ContactUsPage() {
                   Fill out the form below and we'll get back to you as soon as possible.
                 </p>
               </div>
-              <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <Form {...contactForm}>
+                <form onSubmit={contactForm.handleSubmit(onContactSubmit)} className="space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <FormField
-                      control={form.control}
+                      control={contactForm.control}
                       name="name"
                       render={({ field }) => (
                         <FormItem>
@@ -116,7 +173,7 @@ export default function ContactUsPage() {
                       )}
                     />
                     <FormField
-                      control={form.control}
+                      control={contactForm.control}
                       name="email"
                       render={({ field }) => (
                         <FormItem>
@@ -130,7 +187,7 @@ export default function ContactUsPage() {
                     />
                   </div>
                   <FormField
-                    control={form.control}
+                    control={contactForm.control}
                     name="subject"
                     render={({ field }) => (
                       <FormItem>
@@ -143,7 +200,7 @@ export default function ContactUsPage() {
                     )}
                   />
                   <FormField
-                    control={form.control}
+                    control={contactForm.control}
                     name="message"
                     render={({ field }) => (
                       <FormItem>
@@ -160,8 +217,8 @@ export default function ContactUsPage() {
                     )}
                   />
                   <div className="pt-2">
-                    <Button type="submit" className="w-full sm:w-auto" disabled={isSubmitting}>
-                      {isSubmitting ? (
+                    <Button type="submit" className="w-full sm:w-auto" disabled={isSubmittingContact}>
+                      {isSubmittingContact ? (
                         <>
                           <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                           Sending...
@@ -175,12 +232,13 @@ export default function ContactUsPage() {
                     </Button>
                   </div>
                    <p className="text-xs text-muted-foreground text-center pt-2">
-                     If email sending is not configured, messages are logged to the server console.
+                     If email sending is not configured, messages are logged to the server console. Ensure Resend is configured with an API key and verified domain.
                    </p>
                 </form>
               </Form>
             </div>
 
+            {/* Feedback Section */}
             <div className="space-y-6 mt-8 md:mt-0 md:pl-8 lg:md:pl-12">
               <div>
                 <h2 className="text-2xl font-semibold text-primary">Feedback & Ratings</h2>
@@ -188,36 +246,78 @@ export default function ContactUsPage() {
                   Let us know what you think or how we can improve.
                 </p>
               </div>
-              <div className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="feedback-message">Your Feedback</Label>
-                  <Textarea
-                    id="feedback-message"
-                    placeholder="Share your thoughts, suggestions, or report an issue..."
-                    className="min-h-[120px] resize-y"
-                    disabled
+              <Form {...feedbackForm}>
+                <form onSubmit={feedbackForm.handleSubmit(onFeedbackSubmit)} className="space-y-6">
+                  <FormField
+                    control={feedbackForm.control}
+                    name="feedbackMessage"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel htmlFor="feedback-message">Your Feedback</FormLabel>
+                        <FormControl>
+                          <Textarea
+                            id="feedback-message"
+                            placeholder="Share your thoughts, suggestions, or report an issue..."
+                            className="min-h-[120px] resize-y"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
                   />
-                </div>
-                <div className="space-y-2">
-                  <Label>Rate our platform</Label>
-                  <div className="flex items-center space-x-1">
-                    {[1, 2, 3, 4, 5].map((rating) => (
-                      <Button key={rating} variant="ghost" size="icon" className="text-muted-foreground/50 hover:text-accent" disabled aria-label={`Rate ${rating} star`}>
-                        <Star className="h-6 w-6" />
-                      </Button>
-                    ))}
+                  <FormField
+                    control={feedbackForm.control}
+                    name="rating"
+                    render={({ field }) => ( // field is not directly used for stars but form needs it
+                      <FormItem>
+                        <FormLabel>Rate our platform</FormLabel>
+                        <div className="flex items-center space-x-1">
+                          {[1, 2, 3, 4, 5].map((star) => (
+                            <Button
+                              key={star}
+                              type="button"
+                              variant="ghost"
+                              size="icon"
+                              className={cn(
+                                "hover:text-accent",
+                                currentRating && star <= currentRating ? "text-accent fill-accent" : "text-muted-foreground/50"
+                              )}
+                              onClick={() => {
+                                const newRating = currentRating === star ? null : star;
+                                setCurrentRating(newRating);
+                                feedbackForm.setValue('rating', newRating, { shouldValidate: true });
+                              }}
+                              aria-label={`Rate ${star} star${currentRating && star <= currentRating ? ' selected' : ''}`}
+                            >
+                              <Star className={cn("h-6 w-6", currentRating && star <= currentRating && "fill-current")} />
+                            </Button>
+                          ))}
+                        </div>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <div className="pt-2">
+                    <Button type="submit" className="w-full sm:w-auto" disabled={isSubmittingFeedback}>
+                       {isSubmittingFeedback ? (
+                        <>
+                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                          Submitting...
+                        </>
+                      ) : (
+                        <>
+                          <Send className="mr-2 h-4 w-4" />
+                           Submit Feedback
+                        </>
+                      )}
+                    </Button>
                   </div>
-                </div>
-                <div className="pt-2">
-                  <Button type="button" className="w-full sm:w-auto" disabled>
-                    <Send className="mr-2 h-4 w-4" />
-                    Submit Feedback (Coming Soon)
-                  </Button>
-                </div>
-                <p className="text-xs text-muted-foreground text-center pt-2">
-                  Feedback submission functionality will be available soon.
-                </p>
-              </div>
+                  <p className="text-xs text-muted-foreground text-center pt-2">
+                    Feedback submissions will be emailed. Ensure Resend is configured.
+                  </p>
+                </form>
+              </Form>
             </div>
           </div>
         </CardContent>
