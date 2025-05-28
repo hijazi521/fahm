@@ -2,8 +2,7 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowRight, BookOpen, Users, Handshake, LayoutGrid } from 'lucide-react';
-// ArticleCard and DUMMY_ARTICLES are no longer needed here as recent uploads are replaced by a message.
+import { ArrowRight, BookOpen, Users, Handshake, LayoutGrid, Instagram } from 'lucide-react';
 
 const featuredSections = [
   {
@@ -33,8 +32,6 @@ const featuredSections = [
 ];
 
 export default function HomePage() {
-  // const recentArticles = DUMMY_ARTICLES.slice(0, 3); // No longer needed
-
   return (
     <div className="space-y-16">
       {/* Hero Section */}
@@ -45,11 +42,24 @@ export default function HomePage() {
         <p className="mt-6 text-lg text-muted-foreground sm:text-xl sm:max-w-2xl sm:mx-auto md:text-2xl">
           Explore articles and reports written exclusively by students
         </p>
-        <Button asChild size="lg" className="mt-8 bg-accent text-accent-foreground hover:bg-accent/90">
-          <Link href="/publishments">
-            View Publishments <ArrowRight className="ml-2 h-5 w-5" />
-          </Link>
-        </Button>
+        <div className="mt-8 flex justify-center items-center space-x-4">
+          <Button
+            asChild
+            size="lg"
+            variant="outline"
+            className="border-accent text-accent hover:bg-accent/10"
+            aria-label="Fahm on Instagram"
+          >
+            <Link href="https://www.instagram.com/fahmsite/" target="_blank" rel="noopener noreferrer">
+              <Instagram className="h-6 w-6" />
+            </Link>
+          </Button>
+          <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
+            <Link href="/publishments">
+              View Publishments <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+          </Button>
+        </div>
       </section>
 
       {/* Featured Sections */}
