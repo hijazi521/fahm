@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
-import { ArrowRight, BookOpen, Users, Handshake, LayoutGrid, Instagram } from 'lucide-react';
+import { ArrowRight, BookOpen, Users, Handshake, LayoutGrid, Instagram, Send } from 'lucide-react';
 import { DUMMY_ARTICLES, type Article } from '@/lib/constants';
 import { ArticleCard } from '@/components/research/article-card';
 
@@ -72,7 +72,7 @@ export default function HomePage() {
         <h2 className="text-3xl font-semibold text-center mb-8 text-primary">
           Discover Fahm:
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6"> {/* Adjusted grid for 4 items */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {featuredSections.map((section) => (
             <Card key={section.title} className="shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out flex flex-col">
               <CardHeader className="items-center text-center">
@@ -82,7 +82,7 @@ export default function HomePage() {
               <CardContent className="flex-grow">
                 <CardDescription className="text-center">{section.description}</CardDescription>
               </CardContent>
-              <div className="p-4 pt-0 text-center"> {/* Changed CardFooter to div to match structure */}
+              <div className="p-4 pt-0 text-center">
                 <Button asChild variant="outline" className="w-full">
                   <Link href={section.href}>
                     Learn More <ArrowRight className="ml-2 h-4 w-4" />
@@ -92,6 +92,23 @@ export default function HomePage() {
             </Card>
           ))}
         </div>
+      </section>
+
+      {/* Call to Action - Submit Work */}
+      <section className="py-8">
+        <Card className="bg-accent text-accent-foreground shadow-xl hover:shadow-2xl transition-shadow duration-300 ease-in-out">
+          <CardContent className="p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between">
+            <div className="text-center sm:text-left mb-4 sm:mb-0">
+              <h3 className="text-2xl font-semibold">Have Research to Share?</h3>
+              <p className="text-lg opacity-90">Submit your work now and contribute to our growing platform.</p>
+            </div>
+            <Button asChild size="lg" variant="outline" className="bg-accent-foreground text-accent hover:bg-accent-foreground/90 hover:text-accent border-accent-foreground">
+              <Link href="/submit">
+                Submit Your Work <Send className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
+          </CardContent>
+        </Card>
       </section>
 
       {/* Recent Uploads Section */}
