@@ -1,7 +1,7 @@
 
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { ArrowRight, BookOpen, Users, Handshake, LayoutGrid, Instagram } from 'lucide-react';
 import { DUMMY_ARTICLES, type Article } from '@/lib/constants';
 import { ArticleCard } from '@/components/research/article-card';
@@ -82,7 +82,7 @@ export default function HomePage() {
               <CardContent className="flex-grow">
                 <CardDescription className="text-center">{section.description}</CardDescription>
               </CardContent>
-              <div className="p-4 pt-0 text-center">
+              <div className="p-4 pt-0 text-center"> {/* Changed CardFooter to div to match structure */}
                 <Button asChild variant="outline" className="w-full">
                   <Link href={section.href}>
                     Learn More <ArrowRight className="ml-2 h-4 w-4" />
@@ -97,7 +97,7 @@ export default function HomePage() {
       {/* Recent Uploads Section */}
       <section>
         <h2 className="text-3xl font-semibold text-center mb-8 text-primary">
-          Recent Uploads
+          Recent Uploads:
         </h2>
         {recentArticles.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
