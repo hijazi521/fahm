@@ -19,18 +19,17 @@ const featuredSections = [
     href: '/mission',
     icon: <BookOpen className="h-8 w-8 text-accent" />,
   },
-  // The "Team" page link was removed from the header, so removing it from featured sections as well for consistency.
-  // {
-  //   title: 'Meet the Team',
-  //   description: 'Get to know the people behind Fahm.',
-  //   href: '/team', // This page is no longer linked in header
-  //   icon: <Users className="h-8 w-8 text-accent" />,
-  // },
   {
     title: 'Our Partners',
     description: 'Discover our collaborations.',
     href: '/partners',
     icon: <Handshake className="h-8 w-8 text-accent" />,
+  },
+  {
+    title: 'Connect With Us',
+    description: 'Get in touch, meet the team, or share feedback.',
+    href: '/contact', // The "Connect" page is currently at /contact
+    icon: <Users className="h-8 w-8 text-accent" />,
   },
 ];
 
@@ -73,7 +72,7 @@ export default function HomePage() {
         <h2 className="text-3xl font-semibold text-center mb-8 text-primary">
           Discover Fahm
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"> {/* Adjusted grid to lg:grid-cols-3 since one item was removed */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6"> {/* Adjusted grid for 4 items */}
           {featuredSections.map((section) => (
             <Card key={section.title} className="shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out flex flex-col">
               <CardHeader className="items-center text-center">
@@ -110,7 +109,7 @@ export default function HomePage() {
           <Card className="shadow-lg">
             <CardContent className="py-8 text-center">
               <p className="text-xl text-muted-foreground">
-                No recent articles to display. Check back soon!
+                Going to be released soon
               </p>
             </CardContent>
           </Card>
