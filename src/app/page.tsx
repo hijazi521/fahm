@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
-import { ArrowRight, BookOpen, Users, Handshake, LayoutGrid, Instagram, Send } from 'lucide-react';
+import { ArrowRight, BookOpen, Users, Handshake, LayoutGrid, Instagram, Send, Twitter } from 'lucide-react';
 import { DUMMY_ARTICLES, type Article } from '@/lib/constants';
 import { ArticleCard } from '@/components/research/article-card';
 
@@ -62,6 +62,17 @@ export default function HomePage({ params, searchParams }: PageProps) {
           >
             <Link href="https://www.instagram.com/fahmsite/" target="_blank" rel="noopener noreferrer">
               <Instagram className="h-8 w-8" />
+            </Link>
+          </Button>
+          <Button
+            asChild
+            size="icon"
+            variant="outline"
+            className="border-accent text-accent hover:bg-accent/10"
+            aria-label="Fahm on Twitter (Coming Soon)"
+          >
+            <Link href="/coming-soon">
+              <Twitter className="h-8 w-8" />
             </Link>
           </Button>
           <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
