@@ -2,7 +2,12 @@
 import { Hourglass } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
-export default function ComingSoonPage() {
+type PageProps = {
+  params?: { [key: string]: string | string[] | undefined };
+  searchParams?: { [key: string]: string | string[] | undefined };
+};
+
+export default function ComingSoonPage({ params, searchParams }: PageProps) {
   return (
     <div className="flex flex-col items-center justify-center min-h-[60vh] space-y-8 py-12">
       <Card className="w-full max-w-md shadow-xl text-center">

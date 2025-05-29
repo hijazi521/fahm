@@ -2,7 +2,12 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { UploadCloud } from "lucide-react";
 
-export default function SubmitPage() {
+type PageProps = {
+  params?: { [key: string]: string | string[] | undefined };
+  searchParams?: { [key: string]: string | string[] | undefined };
+};
+
+export default function SubmitPage({ params, searchParams }: PageProps) {
   return (
     <div className="space-y-8">
       <section className="text-center py-8">

@@ -2,7 +2,12 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Target } from "lucide-react";
 
-export default function MissionPage() {
+type PageProps = {
+  params?: { [key: string]: string | string[] | undefined };
+  searchParams?: { [key: string]: string | string[] | undefined };
+};
+
+export default function MissionPage({ params, searchParams }: PageProps) {
   return (
     <div className="space-y-8">
       <section className="text-center py-8">

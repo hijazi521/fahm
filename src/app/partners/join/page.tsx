@@ -1,7 +1,13 @@
+
 import { PartnerProgramForm } from "@/components/forms/partner-program-form";
 import { Users } from "lucide-react";
 
-export default function JoinPartnerProgramPage() {
+type PageProps = {
+  params?: { [key: string]: string | string[] | undefined };
+  searchParams?: { [key: string]: string | string[] | undefined };
+};
+
+export default function JoinPartnerProgramPage({ params, searchParams }: PageProps) {
   return (
     <div className="space-y-8">
       <section className="text-center py-8">

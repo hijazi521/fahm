@@ -6,6 +6,11 @@ import { ArrowRight, BookOpen, Users, Handshake, LayoutGrid, Instagram, Send } f
 import { DUMMY_ARTICLES, type Article } from '@/lib/constants';
 import { ArticleCard } from '@/components/research/article-card';
 
+type PageProps = {
+  params?: { [key: string]: string | string[] | undefined };
+  searchParams?: { [key: string]: string | string[] | undefined };
+};
+
 const featuredSections = [
   {
     title: 'Our Mission',
@@ -36,7 +41,7 @@ const featuredSections = [
 // Get the two most recent articles for the "Recent Uploads" section
 const recentArticles = DUMMY_ARTICLES.slice(0, 2);
 
-export default function HomePage() {
+export default function HomePage({ params, searchParams }: PageProps) {
   return (
     <div className="space-y-16">
       {/* Hero Section */}

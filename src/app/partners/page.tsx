@@ -2,10 +2,15 @@
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import Image from "next/image";
+import Image from "next/image"; // Keep Image import if you plan to add partner logos later
 import { Handshake, ExternalLink } from "lucide-react";
 
-export default function PartnersPage() {
+type PageProps = {
+  params?: { [key: string]: string | string[] | undefined };
+  searchParams?: { [key: string]: string | string[] | undefined };
+};
+
+export default function PartnersPage({ params, searchParams }: PageProps) {
   return (
     <div className="space-y-12">
       <section className="text-center py-8">
@@ -20,6 +25,7 @@ export default function PartnersPage() {
 
       <section className="py-8">
         <h2 className="text-3xl sm:text-4xl font-semibold text-center mb-12 text-primary">Official Partners</h2>
+        {/* Placeholder for official partners - current message "Collaborations coming soon" */}
         <Card className="shadow-md">
           <CardContent className="py-10 text-center">
             <p className="text-xl text-muted-foreground">
@@ -28,6 +34,7 @@ export default function PartnersPage() {
           </CardContent>
         </Card>
       </section>
+
 
       <Card className="shadow-lg mt-16">
         <CardHeader>

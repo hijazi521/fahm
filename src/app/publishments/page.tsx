@@ -3,7 +3,12 @@ import { ArticleCard } from '@/components/research/article-card';
 import { DUMMY_ARTICLES, type Article } from '@/lib/constants';
 import { LayoutGrid } from 'lucide-react';
 
-export default function PublishmentsPage() {
+type PageProps = {
+  params?: { [key: string]: string | string[] | undefined };
+  searchParams?: { [key: string]: string | string[] | undefined };
+};
+
+export default function PublishmentsPage({ params, searchParams }: PageProps) {
   return (
     <div className="space-y-8">
       <section className="text-center py-8">
