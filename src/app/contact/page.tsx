@@ -11,7 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
-import { Users, Send, Instagram, Linkedin, Twitter, Star, Loader2 } from "lucide-react";
+import { Users, Send, Instagram, Twitter, Star, Loader2 } from "lucide-react"; // Removed Linkedin
 import { handleContactFormSubmission } from "@/app/actions/contact-actions";
 import { handleFeedbackSubmission, type FeedbackFormValues as FeedbackFormSchemaValues } from "@/app/actions/feedback-actions";
 import { cn } from "@/lib/utils";
@@ -41,8 +41,12 @@ const clientFeedbackFormSchema = z.object({
 });
 type FeedbackFormValues = z.infer<typeof clientFeedbackFormSchema>;
 
+type PageProps = {
+  params?: { [key: string]: string | string[] | undefined };
+  searchParams?: { [key: string]: string | string[] | undefined };
+};
 
-export default function ConnectPage() {
+export default function ConnectPage({ params, searchParams }: PageProps) {
   const { toast } = useToast();
   const [isSubmittingContact, setIsSubmittingContact] = useState(false);
   const [isSubmittingFeedback, setIsSubmittingFeedback] = useState(false);
@@ -353,17 +357,11 @@ export default function ConnectPage() {
           >
             <Twitter className="h-8 w-8" />
           </a>
-          <a
-            href="#" // Replace with your actual LinkedIn link
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-accent transition-colors"
-            aria-label="Fahm on LinkedIn"
-          >
-            <Linkedin className="h-8 w-8" />
-          </a>
+          {/* LinkedIn icon and link removed */}
         </div>
       </section>
     </div>
   );
 }
+
+    
