@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter }
 import { ArrowRight, BookOpen, Users, Handshake, LayoutGrid, Instagram, Send, Twitter } from 'lucide-react';
 import { DUMMY_ARTICLES, type Article } from '@/lib/constants';
 import { ArticleCard } from '@/components/research/article-card';
+import { use } from 'react';
 
 type PageProps = {
   params?: { [key: string]: string | string[] | undefined };
@@ -42,6 +43,13 @@ const featuredSections = [
 const recentArticles = DUMMY_ARTICLES.slice(0, 2);
 
 export default function HomePage({ params, searchParams }: PageProps) {
+  if (params) {
+    use(params);
+  }
+  if (searchParams) {
+    use(searchParams);
+  }
+
   return (
     <div className="space-y-16">
       {/* Hero Section */}
@@ -64,7 +72,7 @@ export default function HomePage({ params, searchParams }: PageProps) {
               <Instagram className="h-8 w-8" />
             </Link>
           </Button>
-          <Button
+           <Button
             asChild
             size="icon"
             variant="outline"
