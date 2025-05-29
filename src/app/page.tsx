@@ -8,16 +8,16 @@ import { ArticleCard } from '@/components/research/article-card';
 
 const featuredSections = [
   {
-    title: 'Publishments',
-    description: 'Explore groundbreaking papers and articles.',
-    href: '/publishments',
-    icon: <LayoutGrid className="h-8 w-8 text-accent" />,
-  },
-  {
     title: 'Our Mission',
     description: 'Learn about our vision and goals.',
     href: '/mission',
     icon: <BookOpen className="h-8 w-8 text-accent" />,
+  },
+  {
+    title: 'Publishments',
+    description: 'Explore groundbreaking papers and articles.',
+    href: '/publishments',
+    icon: <LayoutGrid className="h-8 w-8 text-accent" />,
   },
   {
     title: 'Our Partners',
@@ -45,7 +45,7 @@ export default function HomePage() {
           Welcome to Fahm
         </h1>
         <p className="mt-6 text-lg text-muted-foreground sm:text-xl sm:max-w-2xl sm:mx-auto md:text-2xl">
-          Explore articles and reports written exclusively by students
+          Explore articles and reports written exclusively by students!
         </p>
         <div className="mt-8 flex justify-center items-center space-x-4">
           <Button
