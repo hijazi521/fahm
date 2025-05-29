@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRight, BookOpen, Users, Handshake, LayoutGrid, Instagram } from 'lucide-react';
+import { DUMMY_ARTICLES, type Article } from '@/lib/constants';
+import { ArticleCard } from '@/components/research/article-card';
 
 const featuredSections = [
   {
@@ -17,12 +19,13 @@ const featuredSections = [
     href: '/mission',
     icon: <BookOpen className="h-8 w-8 text-accent" />,
   },
-  {
-    title: 'Meet the Team',
-    description: 'Get to know the people behind Fahm.',
-    href: '/team',
-    icon: <Users className="h-8 w-8 text-accent" />,
-  },
+  // The "Team" page link was removed from the header, so removing it from featured sections as well for consistency.
+  // {
+  //   title: 'Meet the Team',
+  //   description: 'Get to know the people behind Fahm.',
+  //   href: '/team', // This page is no longer linked in header
+  //   icon: <Users className="h-8 w-8 text-accent" />,
+  // },
   {
     title: 'Our Partners',
     description: 'Discover our collaborations.',
@@ -30,6 +33,9 @@ const featuredSections = [
     icon: <Handshake className="h-8 w-8 text-accent" />,
   },
 ];
+
+// Get the two most recent articles for the "Recent Uploads" section
+const recentArticles = DUMMY_ARTICLES.slice(0, 2);
 
 export default function HomePage() {
   return (
@@ -67,7 +73,7 @@ export default function HomePage() {
         <h2 className="text-3xl font-semibold text-center mb-8 text-primary">
           Discover Fahm
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"> {/* Adjusted grid to lg:grid-cols-3 since one item was removed */}
           {featuredSections.map((section) => (
             <Card key={section.title} className="shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out flex flex-col">
               <CardHeader className="items-center text-center">
@@ -94,13 +100,21 @@ export default function HomePage() {
         <h2 className="text-3xl font-semibold text-center mb-8 text-primary">
           Recent Uploads
         </h2>
-        <Card className="shadow-lg">
-          <CardContent className="py-8 text-center">
-            <p className="text-xl text-muted-foreground">
-              Going to be released soon
-            </p>
-          </CardContent>
-        </Card>
+        {recentArticles.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {recentArticles.map((article: Article) => (
+              <ArticleCard key={article.id} article={article} />
+            ))}
+          </div>
+        ) : (
+          <Card className="shadow-lg">
+            <CardContent className="py-8 text-center">
+              <p className="text-xl text-muted-foreground">
+                No recent articles to display. Check back soon!
+              </p>
+            </CardContent>
+          </Card>
+        )}
       </section>
     </div>
   );
