@@ -11,7 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
-import { Users, Send, Instagram, Linkedin, Twitter, Star, Loader2 } from "lucide-react"; // Changed Mail to Users
+import { Users, Send, Instagram, Linkedin, Twitter, Star, Loader2 } from "lucide-react";
 import { handleContactFormSubmission } from "@/app/actions/contact-actions";
 import { handleFeedbackSubmission, type FeedbackFormValues as FeedbackFormSchemaValues } from "@/app/actions/feedback-actions";
 import { cn } from "@/lib/utils";
@@ -42,7 +42,7 @@ const clientFeedbackFormSchema = z.object({
 type FeedbackFormValues = z.infer<typeof clientFeedbackFormSchema>;
 
 
-export default function ConnectPage() { // Renamed page component
+export default function ConnectPage() {
   const { toast } = useToast();
   const [isSubmittingContact, setIsSubmittingContact] = useState(false);
   const [isSubmittingFeedback, setIsSubmittingFeedback] = useState(false);
@@ -133,7 +133,7 @@ export default function ConnectPage() { // Renamed page component
   return (
     <div className="space-y-8">
       <section className="text-center py-8">
-        <Users className="mx-auto h-16 w-16 text-accent mb-4" /> {/* Changed icon */}
+        <Users className="mx-auto h-16 w-16 text-accent mb-4" />
         <h1 className="text-4xl font-bold tracking-tight text-primary sm:text-5xl">
           Connect With Us
         </h1>
@@ -347,11 +347,9 @@ export default function ConnectPage() { // Renamed page component
             <Instagram className="h-8 w-8" />
           </a>
           <a
-            href="#" // Replace with your actual Twitter/X link
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/coming-soon" 
             className="text-muted-foreground hover:text-accent transition-colors"
-            aria-label="Fahm on Twitter"
+            aria-label="Fahm on Twitter (Coming Soon)"
           >
             <Twitter className="h-8 w-8" />
           </a>
