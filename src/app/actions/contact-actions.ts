@@ -49,8 +49,19 @@ export async function handleContactFormSubmission(
     const fromEmail = 'contactform@yourverifieddomain.com'; // CHANGE THIS
     const toEmail = 'fahmcontactus@gmail.com'; // This is the destination email
 
+    // WARNING: Setting the 'from' address directly to a user-provided email
+    // (especially from free email providers like @gmail.com) is generally
+    // not recommended and can lead to high spam scores or delivery failures.
+    // Email services like Resend often require sending from a verified domain
+    // to prevent spoofing.
+    // The 'reply_to' field (already correctly set to the user's email)
+    // is the standard way to ensure replies go to the user.
+    // Consider reverting to a fixed, verified 'fromEmail' if you encounter
+    // deliverability issues. For example:
+    // const fromEmail = 'contactform@yourverifieddomain.com'; // A domain you've verified with Resend
+    // And then use: from: `"${name}" <${fromEmail}>`,
     await resend.emails.send({
-      from: `"${name}" <${fromEmail}>`, // Sender name and email
+      from: `"${name}" <${email}>`, // Sender name and email
       to: toEmail,
       subject: `Fahm Contact Form: ${subject}`,
       reply_to: email, // Set the sender's email as the reply-to address
