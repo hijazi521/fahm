@@ -28,7 +28,7 @@ const featuredSections = [
   {
     title: 'Connect With Us',
     description: 'Get in touch, meet the team, or share feedback.',
-    href: '/contact', 
+    href: '/contact',
     icon: <Users className="h-8 w-8 text-accent" />,
   },
 ];
@@ -99,8 +99,8 @@ export default function HomePage() {
         <Card className="bg-accent text-accent-foreground shadow-xl hover:shadow-2xl transition-shadow duration-300 ease-in-out">
           <CardContent className="p-4 sm:p-6 flex flex-col sm:flex-row items-center justify-between">
             <div className="text-center sm:text-left mb-4 sm:mb-0">
-              <h3 className="text-2xl font-semibold">Have Research to Share?</h3>
-              <p className="text-lg opacity-90">Submit your work now and contribute to our growing platform.</p>
+              <h3 className="text-2xl font-semibold underline">Have Research to Share?</h3>
+              <p className="text-lg opacity-90 font-semibold">Submit your work now and contribute to our growing platform.</p>
             </div>
             <Button asChild size="lg" variant="outline" className="bg-accent-foreground text-accent hover:bg-accent-foreground/90 hover:text-accent border-accent-foreground">
               <Link href="/submit">
