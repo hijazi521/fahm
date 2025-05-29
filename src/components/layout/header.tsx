@@ -1,13 +1,13 @@
 
 import Link from 'next/link';
-import { BookOpen, LayoutGrid, Handshake, Mail, UploadCloud } from 'lucide-react'; // Removed Users icon
+import { BookOpen, LayoutGrid, Handshake, Mail, UploadCloud, Users, MessageSquare } from 'lucide-react';
 
 const navItems = [
   { href: '/mission', label: 'Mission', icon: <BookOpen className="h-5 w-5" /> },
   { href: '/publishments', label: 'Publishments', icon: <LayoutGrid className="h-5 w-5" /> },
   { href: '/partners', label: 'Partners', icon: <Handshake className="h-5 w-5" /> },
   { href: '/submit', label: 'Submit', icon: <UploadCloud className="h-5 w-5" /> },
-  { href: '/contact', label: 'Contact Us', icon: <Mail className="h-5 w-5" /> },
+  { href: '/contact', label: 'Connect', icon: <Users className="h-5 w-5" /> }, // Changed label and icon
 ];
 
 export function Header() {

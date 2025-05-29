@@ -5,16 +5,15 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Send, Instagram, Linkedin, Twitter, Star, Loader2 } from "lucide-react";
+import { Users, Send, Instagram, Linkedin, Twitter, Star, Loader2 } from "lucide-react"; // Changed Mail to Users
 import { handleContactFormSubmission } from "@/app/actions/contact-actions";
-import { handleFeedbackSubmission, type FeedbackFormValues as FeedbackFormSchemaValues } from "@/app/actions/feedback-actions"; // Renamed to avoid conflict
+import { handleFeedbackSubmission, type FeedbackFormValues as FeedbackFormSchemaValues } from "@/app/actions/feedback-actions";
 import { cn } from "@/lib/utils";
 
 const contactFormSchema = z.object({
@@ -36,16 +35,14 @@ const contactFormSchema = z.object({
 
 type ContactFormValues = z.infer<typeof contactFormSchema>;
 
-// Schema for feedback form (can be simpler as it's defined in actions too)
 const clientFeedbackFormSchema = z.object({
   feedbackMessage: z.string().min(10, { message: "Feedback must be at least 10 characters." }).max(2000),
   rating: z.number().min(1).max(5).optional().nullable(),
 });
-// Type for client-side feedback form values
 type FeedbackFormValues = z.infer<typeof clientFeedbackFormSchema>;
 
 
-export default function ContactUsPage() {
+export default function ConnectPage() { // Renamed page component
   const { toast } = useToast();
   const [isSubmittingContact, setIsSubmittingContact] = useState(false);
   const [isSubmittingFeedback, setIsSubmittingFeedback] = useState(false);
@@ -136,12 +133,12 @@ export default function ContactUsPage() {
   return (
     <div className="space-y-8">
       <section className="text-center py-8">
-        <Mail className="mx-auto h-16 w-16 text-accent mb-4" />
+        <Users className="mx-auto h-16 w-16 text-accent mb-4" /> {/* Changed icon */}
         <h1 className="text-4xl font-bold tracking-tight text-primary sm:text-5xl">
-          Contact Us
+          Connect With Us
         </h1>
         <p className="mt-3 text-base text-muted-foreground sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:text-xl">
-          We'd love to hear from you! Whether you have a question, feedback, or a partnership inquiry, please feel free to reach out.
+          Get in touch, share your feedback, or learn more about our team.
         </p>
       </section>
 
@@ -153,7 +150,7 @@ export default function ContactUsPage() {
               <div>
                 <h2 className="text-2xl font-semibold text-primary">Send us a Message</h2>
                 <p className="text-muted-foreground mt-1">
-                  Fill out the form below and we'll get back to you as soon as possible.
+                  Fill out the form below and we'll get back to you.
                 </p>
               </div>
               <Form {...contactForm}>
@@ -269,7 +266,7 @@ export default function ContactUsPage() {
                   <FormField
                     control={feedbackForm.control}
                     name="rating"
-                    render={({ field }) => ( // field is not directly used for stars but form needs it
+                    render={() => ( 
                       <FormItem>
                         <FormLabel>Rate our platform</FormLabel>
                         <div className="flex items-center space-x-1">
@@ -323,7 +320,21 @@ export default function ContactUsPage() {
         </CardContent>
       </Card>
 
-      <section className="text-center py-6 border-t border-border">
+      {/* Meet Our Team Section */}
+      <Card className="max-w-5xl mx-auto shadow-xl mt-8">
+        <CardHeader className="text-center">
+          <Users className="mx-auto h-12 w-12 text-accent mb-3" />
+          <CardTitle className="text-3xl">Meet Our Team</CardTitle>
+          <CardDescription>The dedicated individuals behind Fahm.</CardDescription>
+        </CardHeader>
+        <CardContent className="py-6 text-center">
+          <p className="text-lg text-muted-foreground">
+            Team member details will be updated soon.
+          </p>
+        </CardContent>
+      </Card>
+
+      <section className="text-center py-6 border-t border-border mt-8">
         <h2 className="text-2xl font-semibold text-primary mb-6">Follow Us</h2>
         <div className="flex justify-center space-x-6">
           <a
