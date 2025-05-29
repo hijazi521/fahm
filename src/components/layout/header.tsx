@@ -1,13 +1,14 @@
 
 import Link from 'next/link';
-import { BookOpen, LayoutGrid, Handshake, Mail, UploadCloud, Users, MessageSquare } from 'lucide-react';
+import { Home, BookOpen, LayoutGrid, Handshake, UploadCloud, Users } from 'lucide-react';
 
 const navItems = [
+  { href: '/', label: 'Home', icon: <Home className="h-5 w-5" />, hideLabelOnSm: true },
   { href: '/mission', label: 'Mission', icon: <BookOpen className="h-5 w-5" /> },
   { href: '/publishments', label: 'Publishments', icon: <LayoutGrid className="h-5 w-5" /> },
   { href: '/partners', label: 'Partners', icon: <Handshake className="h-5 w-5" /> },
   { href: '/submit', label: 'Submit', icon: <UploadCloud className="h-5 w-5" /> },
-  { href: '/contact', label: 'Connect', icon: <Users className="h-5 w-5" /> }, // Changed label and icon
+  { href: '/contact', label: 'Connect', icon: <Users className="h-5 w-5" /> },
 ];
 
 export function Header() {
@@ -23,11 +24,11 @@ export function Header() {
               <Link
                 key={item.label}
                 href={item.href}
-                className="flex items-center space-x-2 px-2 sm:px-3 py-2 rounded-md text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+                className="flex items-center space-x-2 px-2 sm:px-3 py-2 rounded-md text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground transition-colors whitespace-nowrap"
                 aria-label={item.label}
               >
                 {item.icon}
-                <span className="hidden sm:inline whitespace-nowrap">{item.label}</span>
+                <span className={item.hideLabelOnSm ? 'hidden sm:inline' : 'sm:inline'}>{item.label}</span>
               </Link>
             ))}
           </nav>
