@@ -1,11 +1,10 @@
 
 import Link from 'next/link';
-import { BookOpen, Users, LayoutGrid, Handshake, Mail, UploadCloud } from 'lucide-react';
+import { BookOpen, LayoutGrid, Handshake, Mail, UploadCloud } from 'lucide-react'; // Removed Users icon
 
 const navItems = [
-  { href: '/publishments', label: 'Publishments', icon: <LayoutGrid className="h-5 w-5" /> },
   { href: '/mission', label: 'Mission', icon: <BookOpen className="h-5 w-5" /> },
-  { href: '/team', label: 'Team', icon: <Users className="h-5 w-5" /> },
+  { href: '/publishments', label: 'Publishments', icon: <LayoutGrid className="h-5 w-5" /> },
   { href: '/partners', label: 'Partners', icon: <Handshake className="h-5 w-5" /> },
   { href: '/submit', label: 'Submit', icon: <UploadCloud className="h-5 w-5" /> },
   { href: '/contact', label: 'Contact Us', icon: <Mail className="h-5 w-5" /> },
@@ -28,7 +27,7 @@ export function Header() {
                 aria-label={item.label}
               >
                 {item.icon}
-                <span className="hidden sm:inline">{item.label}</span>
+                <span className="hidden sm:inline whitespace-nowrap">{item.label}</span>
               </Link>
             ))}
           </nav>
