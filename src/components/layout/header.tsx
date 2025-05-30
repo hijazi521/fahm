@@ -12,7 +12,6 @@ import { Button } from "@/components/ui/button"; // Import Button for DropdownMe
 const mainNavItems = [
   { href: '/', label: 'Home', icon: <Home className="h-5 w-5" />, hideLabelOnSm: true },
   { href: '/publishments', label: 'Publishments', icon: <LayoutGrid className="h-5 w-5" /> },
-  // About dropdown will be handled separately
   { href: '/submit', label: 'Submit', icon: <UploadCloud className="h-5 w-5" /> },
   { href: '/contact', label: 'Connect', icon: <Users className="h-5 w-5" /> },
 ];
