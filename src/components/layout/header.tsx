@@ -14,13 +14,13 @@ const mainNavItems = [
   { href: '/publishments', label: 'Publishments', icon: <LayoutGrid className="h-5 w-5" /> },
   // About dropdown will be handled separately
   { href: '/submit', label: 'Submit', icon: <UploadCloud className="h-5 w-5" /> },
+  { href: '/contact', label: 'Connect', icon: <Users className="h-5 w-5" /> },
 ];
 
 const aboutDropdownItems = [
   { href: '/mission', label: 'Our Mission', icon: <BookOpen className="h-5 w-5" /> },
   { href: '/partners', label: 'Our Partners', icon: <Handshake className="h-5 w-5" /> },
   { href: '/team', label: 'Our Team', icon: <Users className="h-5 w-5" /> },
-  { href: '/contact', label: 'Connect With Us', icon: <Users className="h-5 w-5" /> },
 ];
 
 export function Header() {
