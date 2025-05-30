@@ -1,14 +1,26 @@
 
 import Link from 'next/link';
-import { Home, BookOpen, LayoutGrid, Handshake, UploadCloud, Users } from 'lucide-react';
+import { Home, BookOpen, LayoutGrid, Handshake, UploadCloud, Users, ChevronDown, Info } from 'lucide-react';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button"; // Import Button for DropdownMenuTrigger styling
 
-const navItems = [
+const mainNavItems = [
   { href: '/', label: 'Home', icon: <Home className="h-5 w-5" />, hideLabelOnSm: true },
-  { href: '/mission', label: 'Mission', icon: <BookOpen className="h-5 w-5" /> },
   { href: '/publishments', label: 'Publishments', icon: <LayoutGrid className="h-5 w-5" /> },
-  { href: '/partners', label: 'Partners', icon: <Handshake className="h-5 w-5" /> },
+  // About dropdown will be handled separately
   { href: '/submit', label: 'Submit', icon: <UploadCloud className="h-5 w-5" /> },
-  { href: '/contact', label: 'Connect', icon: <Users className="h-5 w-5" /> },
+];
+
+const aboutDropdownItems = [
+  { href: '/mission', label: 'Our Mission', icon: <BookOpen className="h-5 w-5" /> },
+  { href: '/partners', label: 'Our Partners', icon: <Handshake className="h-5 w-5" /> },
+  { href: '/team', label: 'Our Team', icon: <Users className="h-5 w-5" /> },
+  { href: '/contact', label: 'Connect With Us', icon: <Users className="h-5 w-5" /> },
 ];
 
 export function Header() {
@@ -20,7 +32,7 @@ export function Header() {
             Fahm
           </Link>
           <nav className="flex items-center space-x-1 sm:space-x-2">
-            {navItems.map((item) => (
+            {mainNavItems.map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
@@ -31,6 +43,30 @@ export function Header() {
                 <span className={item.hideLabelOnSm ? 'hidden sm:inline' : 'sm:inline'}>{item.label}</span>
               </Link>
             ))}
+
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="ghost"
+                  className="flex items-center space-x-2 px-2 sm:px-3 py-2 rounded-md text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground transition-colors whitespace-nowrap"
+                  aria-label="About Fahm"
+                >
+                  <Info className="h-5 w-5" />
+                  <span className="sm:inline">About</span>
+                  <ChevronDown className="h-4 w-4 opacity-70 ml-1" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-56 bg-card border-border">
+                {aboutDropdownItems.map((item) => (
+                  <DropdownMenuItem key={item.label} asChild className="cursor-pointer hover:bg-accent hover:text-accent-foreground">
+                    <Link href={item.href} className="flex items-center space-x-2 w-full">
+                      {item.icon}
+                      <span>{item.label}</span>
+                    </Link>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
           </nav>
         </div>
       </div>
