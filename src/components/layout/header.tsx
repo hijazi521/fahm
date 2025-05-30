@@ -33,6 +33,7 @@ const aboutDropdownDesktopItems = [
   { href: '/team', label: 'Our Team' },
 ];
 
+// Items for the mobile navigation sheet
 const allMobileNavItems = [
   { type: 'link' as const, href: '/', label: 'Home', icon: <Home className="h-5 w-5" /> },
   { type: 'link' as const, href: '/publishments', label: 'Publishments', icon: <LayoutGrid className="h-5 w-5" /> },
@@ -41,8 +42,9 @@ const allMobileNavItems = [
   { type: 'separator' as const },
   { type: 'link' as const, href: '/mission', label: 'Our Mission', icon: <BookOpen className="h-5 w-5" /> },
   { type: 'link' as const, href: '/partners', label: 'Our Partners', icon: <Handshake className="h-5 w-5" /> },
-  { type: 'link' as const, href: '/team', label: 'Our Team', icon: <Users className="h-5 w-5" /> },
+  { type: 'link' as const, href: '/team', label: 'Our Team', icon: <Users className="h-5 w-5" /> }, // Users icon can represent team
 ];
+
 
 export function Header() {
   return (
@@ -80,15 +82,15 @@ export function Header() {
               </DropdownMenuTrigger>
               <DropdownMenuContent
                 align="end"
-                sideOffset={12}
+                sideOffset={8} // Adjusted sideOffset
                 className="bg-popover text-popover-foreground w-64 p-3 shadow-xl rounded-lg"
               >
                 <div className="grid gap-1">
                   {aboutDropdownDesktopItems.map((item) => (
-                    <DropdownMenuItem key={item.label} asChild className="cursor-pointer p-0 focus:bg-accent focus:text-accent-foreground rounded-md">
+                    <DropdownMenuItem key={item.label} asChild className="cursor-pointer p-0 rounded-md">
                       <Link
                         href={item.href}
-                        className="block px-3 py-2.5 text-sm w-full"
+                        className="block px-3 py-2.5 text-sm w-full rounded-md hover:bg-muted/20 focus:bg-muted/20 focus:outline-none transition-colors duration-150"
                       >
                         {item.label}
                       </Link>
