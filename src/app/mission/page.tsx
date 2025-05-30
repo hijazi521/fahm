@@ -30,7 +30,7 @@ export default function MissionPage({ params, searchParams }: PageProps) {
 
       <Card className="shadow-lg">
         <CardHeader>
-          <CardTitle className="text-2xl">Empowering Through Insight</CardTitle>
+          <CardTitle className="text-2xl">Empowering Through Innovation</CardTitle>
         </CardHeader>
         <CardContent className="space-y-6 text-lg leading-relaxed text-foreground/90">
           <div>
