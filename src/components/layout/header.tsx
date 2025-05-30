@@ -1,7 +1,7 @@
 
 import Link from 'next/link';
 import React from 'react';
-import { Home, BookOpen, LayoutGrid, Handshake, UploadCloud, Users, ChevronDown, Info, Menu } from 'lucide-react';
+import { Home, LayoutGrid, UploadCloud, Users, ChevronDown, Info, Menu, BookOpen, Handshake } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -26,10 +26,11 @@ const mainNavItems = [
   { href: '/contact', label: 'Connect', icon: <Users className="h-5 w-5" /> },
 ];
 
+// Items for the "About" dropdown menu (desktop) - No icons
 const aboutDropdownDesktopItems = [
-  { href: '/mission', label: 'Our Mission', icon: <BookOpen className="h-5 w-5" /> },
-  { href: '/partners', label: 'Our Partners', icon: <Handshake className="h-5 w-5" /> },
-  { href: '/team', label: 'Our Team', icon: <Users className="h-5 w-5" /> },
+  { href: '/mission', label: 'Our Mission' },
+  { href: '/partners', label: 'Our Partners' },
+  { href: '/team', label: 'Our Team' },
 ];
 
 const allMobileNavItems = [
@@ -77,15 +78,23 @@ export function Header() {
                   <ChevronDown className="h-4 w-4 opacity-70 ml-1" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-56 bg-card text-card-foreground"> {/* Removed border class */}
-                {aboutDropdownDesktopItems.map((item) => (
-                  <DropdownMenuItem key={item.label} asChild className="cursor-pointer hover:bg-accent hover:text-accent-foreground">
-                    <Link href={item.href} className="flex items-center space-x-2 w-full">
-                      {item.icon}
-                      <span>{item.label}</span>
-                    </Link>
-                  </DropdownMenuItem>
-                ))}
+              <DropdownMenuContent
+                align="end"
+                sideOffset={12}
+                className="bg-popover text-popover-foreground w-64 p-3 shadow-xl rounded-lg"
+              >
+                <div className="grid gap-1">
+                  {aboutDropdownDesktopItems.map((item) => (
+                    <DropdownMenuItem key={item.label} asChild className="cursor-pointer p-0 focus:bg-accent focus:text-accent-foreground rounded-md">
+                      <Link
+                        href={item.href}
+                        className="block px-3 py-2.5 text-sm w-full"
+                      >
+                        {item.label}
+                      </Link>
+                    </DropdownMenuItem>
+                  ))}
+                </div>
               </DropdownMenuContent>
             </DropdownMenu>
           </nav>
