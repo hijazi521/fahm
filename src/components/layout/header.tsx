@@ -48,10 +48,11 @@ export function Header() {
     <header className="bg-background sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <Link href="/" className="text-2xl font-bold text-primary hover:text-accent transition-colors" aria-label="Fahm Homepage">
+          <Link href="/" className="text-3xl md:text-4xl font-bold text-primary hover:text-accent transition-colors" aria-label="Fahm Homepage">
             Fahm
           </Link>
 
+          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-2">
             {mainNavItems.map((item) => (
               <Link
@@ -76,7 +77,7 @@ export function Header() {
                   <ChevronDown className="h-4 w-4 opacity-70 ml-1" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-56 bg-card border-border">
+              <DropdownMenuContent className="w-56 bg-card text-card-foreground"> {/* Removed border class */}
                 {aboutDropdownDesktopItems.map((item) => (
                   <DropdownMenuItem key={item.label} asChild className="cursor-pointer hover:bg-accent hover:text-accent-foreground">
                     <Link href={item.href} className="flex items-center space-x-2 w-full">
@@ -89,6 +90,7 @@ export function Header() {
             </DropdownMenu>
           </nav>
 
+          {/* Mobile Navigation Trigger */}
           <div className="md:hidden">
             <Sheet>
               <SheetTrigger asChild>
@@ -101,7 +103,7 @@ export function Header() {
                   <Menu className="h-6 w-6" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[280px] sm:w-[320px] bg-card p-0 text-foreground">
+              <SheetContent side="right" className="w-[280px] sm:w-[320px] bg-card p-0 text-card-foreground">
                 <SheetHeader className="p-4 border-b border-border">
                   <SheetTitle className="text-xl text-primary">Menu</SheetTitle>
                 </SheetHeader>
