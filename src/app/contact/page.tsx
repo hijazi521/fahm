@@ -4,14 +4,14 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-import { useState } from "react";
+import { useState, use } from "react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
-import { Users, Send, Instagram, Twitter, Star, Loader2 } from "lucide-react"; // Removed Linkedin
+import { Users, Send, Instagram, Twitter, Star, Loader2 } from "lucide-react";
 import { handleContactFormSubmission } from "@/app/actions/contact-actions";
 import { handleFeedbackSubmission, type FeedbackFormValues as FeedbackFormSchemaValues } from "@/app/actions/feedback-actions";
 import { cn } from "@/lib/utils";
@@ -47,6 +47,12 @@ type PageProps = {
 };
 
 export default function ConnectPage({ params, searchParams }: PageProps) {
+  if (params) {
+    use(params);
+  }
+  if (searchParams) {
+    use(searchParams);
+  }
   const { toast } = useToast();
   const [isSubmittingContact, setIsSubmittingContact] = useState(false);
   const [isSubmittingFeedback, setIsSubmittingFeedback] = useState(false);
@@ -324,20 +330,6 @@ export default function ConnectPage({ params, searchParams }: PageProps) {
         </CardContent>
       </Card>
 
-      {/* Meet Our Team Section */}
-      <Card className="max-w-5xl mx-auto shadow-xl mt-8">
-        <CardHeader className="text-center">
-          <Users className="mx-auto h-12 w-12 text-accent mb-3" />
-          <CardTitle className="text-3xl">Meet Our Team</CardTitle>
-          <CardDescription>The dedicated individuals behind Fahm.</CardDescription>
-        </CardHeader>
-        <CardContent className="py-6 text-center">
-          <p className="text-lg text-muted-foreground">
-            Team member details will be updated soon.
-          </p>
-        </CardContent>
-      </Card>
-
       <section className="text-center py-6 border-t border-border mt-8">
         <h2 className="text-2xl font-semibold text-primary mb-6">Follow Us</h2>
         <div className="flex justify-center space-x-6">
@@ -357,7 +349,6 @@ export default function ConnectPage({ params, searchParams }: PageProps) {
           >
             <Twitter className="h-8 w-8" />
           </a>
-          {/* LinkedIn icon and link removed */}
         </div>
       </section>
     </div>

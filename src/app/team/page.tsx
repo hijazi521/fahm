@@ -1,36 +1,20 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-// Removed DUMMY_TEAM_MEMBERS and TeamMember type import
-// import { DUMMY_TEAM_MEMBERS, type TeamMember } from "@/lib/constants";
-// Removed Image import as TeamMemberCard is removed
-// import Image from "next/image";
 import { Users } from "lucide-react";
+import { use } from 'react';
 
-// Removed TeamMemberCard component as it's no longer used
-// function TeamMemberCard({ member }: { member: TeamMember }) {
-//   return (
-//     <Card className="text-center shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out hover:scale-105 hover:-translate-y-1 bg-card">
-//       <CardHeader className="items-center">
-//         <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-accent mb-4">
-//           <Image
-//             src={member.imageUrl}
-//             alt={member.name}
-//             layout="fill"
-//             objectFit="cover"
-//             data-ai-hint={member.imageHint}
-//           />
-//         </div>
-//         <CardTitle className="text-xl">{member.name}</CardTitle>
-//         <CardDescription className="text-accent">{member.role}</CardDescription>
-//       </CardHeader>
-//       <CardContent>
-//         <p className="text-sm text-foreground/80">{member.bio}</p>
-//       </CardContent>
-//     </Card>
-//   );
-// }
+type PageProps = {
+  params?: { [key: string]: string | string[] | undefined };
+  searchParams?: { [key: string]: string | string[] | undefined };
+};
 
-export default function TeamPage() {
+export default function TeamPage({ params, searchParams }: PageProps) {
+  if (params) {
+    use(params);
+  }
+  if (searchParams) {
+    use(searchParams);
+  }
   return (
     <div className="space-y-12">
       <section className="text-center py-8">
@@ -39,19 +23,23 @@ export default function TeamPage() {
           Meet Our Team
         </h1>
         <p className="mt-3 text-base text-muted-foreground sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:text-xl">
-          The team behind this project helping students all over the world. The team that is working day and night to bring the best result possible.
+          The dedicated individuals behind Fahm. The team that is working day and night to bring the best result possible.
         </p>
       </section>
 
-      <section>
-        <Card className="shadow-lg">
-          <CardContent className="py-12 text-center">
-            <p className="text-xl text-muted-foreground">
-              will be updated soon
-            </p>
-          </CardContent>
-        </Card>
-      </section>
+      <Card className="max-w-5xl mx-auto shadow-xl mt-8">
+        <CardHeader className="text-center">
+          <CardTitle className="text-3xl">Team Members</CardTitle>
+          <CardDescription>The passionate individuals driving Fahm forward.</CardDescription>
+        </CardHeader>
+        <CardContent className="py-10 text-center">
+          <p className="text-xl text-muted-foreground">
+            Team member details will be updated soon.
+          </p>
+        </CardContent>
+      </Card>
     </div>
   );
 }
+
+    
