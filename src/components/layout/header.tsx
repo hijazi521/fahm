@@ -47,19 +47,17 @@ export function Header() {
   return (
     <header className="bg-background sticky top-0 z-50">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16 md:h-20"> {/* Increased height for desktop for floating items */}
-          {/* Logo */}
+        <div className="flex items-center justify-between h-16 md:h-20">
           <Link href="/" className="text-2xl font-bold text-primary hover:text-accent transition-colors" aria-label="Fahm Homepage">
             Fahm
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-2"> {/* Adjusted spacing for shadowed items */}
+          <nav className="hidden md:flex items-center space-x-2">
             {mainNavItems.map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
-                className="bg-card text-card-foreground shadow-md hover:shadow-lg flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium hover:bg-accent hover:text-accent-foreground transition-all duration-200 whitespace-nowrap"
+                className="bg-card text-card-foreground shadow-md flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium hover:bg-accent hover:text-accent-foreground hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 ease-in-out whitespace-nowrap"
                 aria-label={item.label}
               >
                 {item.icon}
@@ -70,7 +68,7 @@ export function Header() {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button
-                  className="bg-card text-card-foreground shadow-md hover:shadow-lg flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium hover:bg-accent hover:text-accent-foreground transition-all duration-200 whitespace-nowrap"
+                  className="bg-card text-card-foreground shadow-md flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium hover:bg-accent hover:text-accent-foreground hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 ease-in-out whitespace-nowrap"
                   aria-label="About Fahm"
                 >
                   <Info className="h-5 w-5" />
@@ -91,7 +89,6 @@ export function Header() {
             </DropdownMenu>
           </nav>
 
-          {/* Mobile Navigation Trigger (Hamburger) */}
           <div className="md:hidden">
             <Sheet>
               <SheetTrigger asChild>
