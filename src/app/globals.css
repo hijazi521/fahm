@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -41,48 +42,40 @@
     --sidebar-ring: 200 80% 70%;
   }
 
-  /* Remove .dark class styling or ensure it doesn't override :root for a light-only theme */
-  /* For now, we'll clear the .dark specific overrides as the base :root is now light */
   .dark {
-    /*
-      If a dark mode toggle is desired later, these variables would be defined here.
-      For now, to ensure light theme is primary, these are effectively commented out
-      by making them identical to :root or simply not overriding.
-      To strictly enforce light theme, this block could be removed,
-      but keeping it might be useful if `className="dark"` is accidentally applied elsewhere.
-      For simplicity of this change, I'll ensure it doesn't interfere.
-    */
-    --background: 0 0% 100%;
-    --foreground: 226 40% 18%;
-    --card: 0 0% 100%;
-    --card-foreground: 226 40% 18%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 226 40% 18%;
-    --primary: 226 40% 18%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 220 13% 46%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 220 10% 95%;
-    --muted-foreground: 220 10% 45%;
-    --accent: 200 80% 50%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 72% 51%;
+    --background: 220 14% 10%; /* Very dark, slightly cool gray */
+    --foreground: 220 10% 80%; /* Light gray for text */
+    --card: 220 14% 15%; /* Slightly lighter than background */
+    --card-foreground: 220 10% 80%;
+    --popover: 220 14% 12%;
+    --popover-foreground: 220 10% 80%;
+    --primary: 200 80% 60%; /* A lighter, vibrant blue for primary actions */
+    --primary-foreground: 220 14% 10%; /* Dark text for primary buttons */
+    --secondary: 220 10% 30%; /* Medium-dark gray for secondary elements */
+    --secondary-foreground: 220 10% 90%; /* Light text on secondary */
+    --muted: 220 10% 20%; /* Darker gray for muted elements */
+    --muted-foreground: 220 10% 60%; /* Medium-light gray for muted text */
+    --accent: 200 80% 55%; /* Slightly less bright blue than primary */
+    --accent-foreground: 0 0% 100%; /* White text on accent */
+    --destructive: 0 60% 50%; /* A clear red for destructive actions */
     --destructive-foreground: 0 0% 100%;
-    --border: 220 15% 90%;
-    --input: 220 15% 90%;
-    --ring: 200 80% 70%;
-    --chart-1: 217 91% 60%;
-    --chart-2: 158 64% 52%;
-    --chart-3: 39 92% 58%;
-    --chart-4: 300 76% 72%;
-    --chart-5: 350 82% 76%;
-    --sidebar-background: 0 0% 97%;
-    --sidebar-foreground: 226 40% 18%;
-    --sidebar-primary: 226 40% 18%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 10% 90%;
-    --sidebar-accent-foreground: 226 40% 18%;
-    --sidebar-border: 220 15% 88%;
+    --border: 220 10% 25%; /* Subtle border color */
+    --input: 220 10% 25%;
+    --ring: 200 80% 70%; /* Lighter blue for focus rings */
+    --chart-1: 217 91% 65%;
+    --chart-2: 158 64% 58%;
+    --chart-3: 39 92% 62%;
+    --chart-4: 300 76% 78%;
+    --chart-5: 350 82% 80%;
+
+    /* Sidebar variables for dark theme */
+    --sidebar-background: 220 14% 12%;
+    --sidebar-foreground: 220 10% 80%;
+    --sidebar-primary: 200 80% 60%;
+    --sidebar-primary-foreground: 220 14% 10%;
+    --sidebar-accent: 220 10% 25%;
+    --sidebar-accent-foreground: 220 10% 90%;
+    --sidebar-border: 220 10% 20%;
     --sidebar-ring: 200 80% 70%;
   }
 }
