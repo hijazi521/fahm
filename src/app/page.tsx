@@ -6,6 +6,7 @@ import { ArrowRight, BookOpen, Users, Handshake, LayoutGrid, Instagram, Send, Tw
 import { DUMMY_ARTICLES, type Article } from '@/lib/constants';
 import { ArticleCard } from '@/components/research/article-card';
 import { use } from 'react';
+import React from 'react'; // Added for React.cloneElement
 
 type PageProps = {
   params?: { [key: string]: string | string[] | undefined };
@@ -91,29 +92,34 @@ export default function HomePage({ params, searchParams }: PageProps) {
         </div>
       </section>
 
-      {/* Featured Sections */}
+      {/* Featured Sections - New Layout */}
       <section>
-        <h2 className="text-3xl font-semibold text-center mb-8 text-primary">
-          Discover Fahm:
+        <h2 className="text-3xl font-semibold text-center mb-10 text-primary">
+          Discover Fahm
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="space-y-8">
           {featuredSections.map((section) => (
-            <Card key={section.title} className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out flex flex-col">
-              <CardHeader className="items-center text-center">
-                {section.icon}
-                <CardTitle className="text-xl mt-2">{section.title}</CardTitle>
-              </CardHeader>
-              <CardContent className="flex-grow">
-                <CardDescription className="text-center">{section.description}</CardDescription>
-              </CardContent>
-              <div className="p-4 pt-0 text-center">
-                <Button asChild variant="outline" className="w-full">
+            <div 
+              key={section.title} 
+              className="flex flex-col sm:flex-row items-center bg-card p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out gap-6 border-0"
+            >
+              <div className="flex-shrink-0">
+                {React.cloneElement(section.icon, { className: "h-12 w-12 sm:h-16 sm:w-16 text-accent" })}
+              </div>
+              <div className="flex-grow text-center sm:text-left">
+                <h3 className="text-xl font-semibold text-primary mb-2">{section.title}</h3>
+                <p className="text-muted-foreground mb-4 text-sm">{section.description}</p>
+                <Button 
+                  asChild 
+                  variant="link" 
+                  className="p-0 h-auto text-accent hover:text-accent/80 text-sm font-medium"
+                >
                   <Link href={section.href}>
-                    Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                    Learn More <ArrowRight className="ml-1.5 h-4 w-4" />
                   </Link>
                 </Button>
               </div>
-            </Card>
+            </div>
           ))}
         </div>
       </section>
