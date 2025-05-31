@@ -18,7 +18,7 @@ import {
   SheetClose,
 } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
-// Removed SidebarTrigger import
+import { SidebarTrigger } from '@/components/ui/sidebar';
 
 const mainNavItems = [
   { href: '/', label: 'Home', icon: <Home className="h-5 w-5" />, hideLabelOnSm: true },
@@ -47,11 +47,13 @@ const allMobileNavItems = [
 
 export function Header() {
   return (
-    <header className="bg-background sticky top-0 z-40"> {/* z-40 so it's below mobile sheet menu (z-50) */}
+    <header className="bg-background sticky top-0 z-40">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
           <div className="flex items-center space-x-3 md:space-x-4">
-            {/* Removed SidebarTrigger button */}
+            <SidebarTrigger className="md:flex hidden text-foreground hover:bg-accent hover:text-accent-foreground">
+                <MenuIcon className="h-6 w-6" />
+            </SidebarTrigger>
             <Link href="/" className="text-3xl md:text-4xl font-bold text-primary hover:text-accent transition-colors" aria-label="Fahm Homepage">
               Fahm
             </Link>
