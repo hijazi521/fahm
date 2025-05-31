@@ -44,7 +44,7 @@ export default function RootLayout({
           attribute="class"
           defaultTheme="system"
           enableSystem
-          disableTransitionOnChange
+          // disableTransitionOnChange // Removed this line to default to false
         >
           {/*
           <SidebarProvider defaultOpen={false}>
