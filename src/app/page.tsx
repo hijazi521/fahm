@@ -41,7 +41,7 @@ const featuredSections = [
 ];
 
 // Get the two most recent articles for the "Recent Uploads" section
-const recentArticles = DUMMY_ARTICLES.slice(0, 2);
+// const recentArticles = DUMMY_ARTICLES.slice(0, 2);
 
 export default function HomePage({ params, searchParams }: PageProps) {
   if (params) {
@@ -141,7 +141,7 @@ export default function HomePage({ params, searchParams }: PageProps) {
         </Card>
       </section>
 
-      {/* Recent Uploads Section */}
+      {/* Recent Uploads Section - Temporarily Removed
       <section>
         <h2 className="text-3xl font-semibold text-center mb-8 text-primary">
           Recent Uploads:
@@ -162,6 +162,7 @@ export default function HomePage({ params, searchParams }: PageProps) {
           </Card>
         )}
       </section>
+      */}
     </div>
   );
 }
