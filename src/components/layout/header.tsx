@@ -1,7 +1,7 @@
 
 import Link from 'next/link';
 import React from 'react';
-import { Home, LayoutGrid, UploadCloud, Users, ChevronDown, Info, Menu, BookOpen, Handshake } from 'lucide-react';
+import { Home, LayoutGrid, UploadCloud, Users as UsersIcon, ChevronDown, Info, Menu as MenuIcon, BookOpen, Handshake, Users as TeamIcon } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -18,72 +18,79 @@ import {
   SheetClose,
 } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
+import { SidebarTrigger } from '@/components/ui/sidebar'; // Import SidebarTrigger
 
 const mainNavItems = [
   { href: '/', label: 'Home', icon: <Home className="h-5 w-5" />, hideLabelOnSm: true },
   { href: '/publishments', label: 'Publishments', icon: <LayoutGrid className="h-5 w-5" /> },
   { href: '/submit', label: 'Submit', icon: <UploadCloud className="h-5 w-5" /> },
-  { href: '/contact', label: 'Connect', icon: <Users className="h-5 w-5" /> },
+  { href: '/contact', label: 'Connect', icon: <UsersIcon className="h-5 w-5" /> },
 ];
 
-// Items for the "About" dropdown menu (desktop) - No icons
 const aboutDropdownDesktopItems = [
   { href: '/mission', label: 'Our Mission' },
   { href: '/partners', label: 'Our Partners' },
   { href: '/team', label: 'Our Team' },
 ];
 
-// Items for the mobile navigation sheet
 const allMobileNavItems = [
   { type: 'link' as const, href: '/', label: 'Home', icon: <Home className="h-5 w-5" /> },
   { type: 'link' as const, href: '/publishments', label: 'Publishments', icon: <LayoutGrid className="h-5 w-5" /> },
   { type: 'link' as const, href: '/submit', label: 'Submit', icon: <UploadCloud className="h-5 w-5" /> },
-  { type: 'link' as const, href: '/contact', label: 'Connect', icon: <Users className="h-5 w-5" /> },
+  { type: 'link' as const, href: '/contact', label: 'Connect', icon: <UsersIcon className="h-5 w-5" /> },
   { type: 'separator' as const },
   { type: 'link' as const, href: '/mission', label: 'Our Mission', icon: <BookOpen className="h-5 w-5" /> },
   { type: 'link' as const, href: '/partners', label: 'Our Partners', icon: <Handshake className="h-5 w-5" /> },
-  { type: 'link' as const, href: '/team', label: 'Our Team', icon: <Users className="h-5 w-5" /> }, // Users icon can represent team
+  { type: 'link' as const, href: '/team', label: 'Our Team', icon: <TeamIcon className="h-5 w-5" /> },
 ];
 
 
 export function Header() {
   return (
-    <header className="bg-background sticky top-0 z-50">
+    <header className="bg-background sticky top-0 z-40 shadow-md"> {/* z-40 so it's below mobile sheet menu (z-50) */}
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <Link href="/" className="text-3xl md:text-4xl font-bold text-primary hover:text-accent transition-colors" aria-label="Fahm Homepage">
-            Fahm
-          </Link>
+          <div className="flex items-center space-x-3 md:space-x-4">
+            {/* SidebarTrigger for Desktop - hidden on mobile as mobile uses a sheet for main nav */}
+            <SidebarTrigger className="h-8 w-8 hidden md:flex text-primary hover:text-accent" aria-label="Toggle Categories Sidebar"/>
+            
+            <Link href="/" className="text-3xl md:text-4xl font-bold text-primary hover:text-accent transition-colors" aria-label="Fahm Homepage">
+              Fahm
+            </Link>
+          </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-2">
+          <nav className="hidden md:flex items-center space-x-1 lg:space-x-2">
             {mainNavItems.map((item) => (
-              <Link
+              <Button
                 key={item.label}
-                href={item.href}
-                className="bg-card text-card-foreground shadow-md flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium hover:bg-accent hover:text-accent-foreground hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 ease-in-out whitespace-nowrap"
-                aria-label={item.label}
+                asChild
+                variant="ghost"
+                className="bg-card text-card-foreground shadow-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 ease-in-out whitespace-nowrap group"
               >
-                {item.icon}
-                <span className={item.hideLabelOnSm ? 'hidden sm:inline' : 'sm:inline'}>{item.label}</span>
-              </Link>
+                <Link href={item.href} aria-label={item.label}>
+                  {React.cloneElement(item.icon, { className: "h-5 w-5 group-hover:text-accent-foreground transition-colors" })}
+                  <span className={item.hideLabelOnSm ? 'hidden sm:inline ml-2' : 'sm:inline ml-2'}>{item.label}</span>
+                </Link>
+              </Button>
             ))}
 
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button
-                  className="bg-card text-card-foreground shadow-md flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium hover:bg-accent hover:text-accent-foreground hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 ease-in-out whitespace-nowrap"
+                  variant="ghost"
+                  className="bg-card text-card-foreground shadow-md flex items-center space-x-2 px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 ease-in-out whitespace-nowrap group"
                   aria-label="About Fahm"
                 >
-                  <Info className="h-5 w-5" />
-                  <span className="sm:inline">About</span>
-                  <ChevronDown className="h-4 w-4 opacity-70 ml-1" />
+                  <Info className="h-5 w-5 group-hover:text-accent-foreground transition-colors" />
+                  <span className="sm:inline ml-2">About</span>
+                  <ChevronDown className="h-4 w-4 opacity-70 ml-1 group-hover:text-accent-foreground transition-colors" />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent
                 align="end"
-                sideOffset={8} // Adjusted sideOffset
-                className="bg-popover text-popover-foreground w-64 p-3 shadow-xl rounded-lg"
+                sideOffset={8}
+                className="bg-popover text-popover-foreground w-64 p-3 shadow-xl rounded-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[side=bottom]:slide-in-from-top-1 data-[side=left]:slide-in-from-right-1 data-[side=right]:slide-in-from-left-1 data-[side=top]:slide-in-from-bottom-1"
               >
                 <div className="grid gap-1">
                   {aboutDropdownDesktopItems.map((item) => (
@@ -101,7 +108,7 @@ export function Header() {
             </DropdownMenu>
           </nav>
 
-          {/* Mobile Navigation Trigger */}
+          {/* Mobile Navigation Trigger (Sheet for main nav) */}
           <div className="md:hidden">
             <Sheet>
               <SheetTrigger asChild>
@@ -111,7 +118,7 @@ export function Header() {
                   className="text-foreground hover:bg-accent hover:text-accent-foreground"
                   aria-label="Open navigation menu"
                 >
-                  <Menu className="h-6 w-6" />
+                  <MenuIcon className="h-6 w-6" />
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-[280px] sm:w-[320px] bg-card p-0 text-card-foreground">
