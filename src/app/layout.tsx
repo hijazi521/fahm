@@ -4,17 +4,17 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/components/layout/header';
 import { Toaster } from "@/components/ui/toaster";
-// import {
-//   SidebarProvider,
-//   Sidebar,
-//   SidebarHeader,
-//   SidebarContent,
-//   SidebarMenu,
-//   SidebarMenuItem,
-//   SidebarMenuButton,
-//   SidebarInset,
-// } from '@/components/ui/sidebar';
-// import { Landmark, Stethoscope, Users, Scale } from 'lucide-react';
+import {
+  SidebarProvider,
+  Sidebar,
+  SidebarHeader,
+  SidebarContent,
+  SidebarMenu,
+  SidebarMenuItem,
+  SidebarMenuButton,
+  SidebarInset,
+} from '@/components/ui/sidebar';
+import { Landmark, Stethoscope, Users, Scale } from 'lucide-react';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -37,10 +37,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en"> {/* Removed className="dark" */}
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {/* <SidebarProvider defaultOpen={false}> */}
-          {/* <Sidebar side="left" collapsible="icon">
+        {/*
+        <SidebarProvider defaultOpen={false}>
+          <Sidebar side="left" collapsible="icon">
             <SidebarHeader>
               <h2 className="text-lg font-semibold text-sidebar-primary group-data-[collapsible=icon]:hidden">Categories</h2>
             </SidebarHeader>
@@ -72,16 +73,19 @@ export default function RootLayout({
                 </SidebarMenuItem>
               </SidebarMenu>
             </SidebarContent>
-          </Sidebar> */}
-          {/* <SidebarInset> */}
+          </Sidebar>
+          <SidebarInset>
+        */}
             <div className="flex flex-col min-h-screen">
               <Header />
               <main className="flex-grow container mx-auto px-4 py-8">
                 {children}
               </main>
             </div>
-          {/* </SidebarInset> */}
-        {/* </SidebarProvider> */}
+        {/*
+          </SidebarInset>
+        </SidebarProvider>
+        */}
         <Toaster />
       </body>
     </html>
