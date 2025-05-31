@@ -18,7 +18,7 @@ import {
   SheetClose,
 } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
-import { SidebarTrigger } from '@/components/ui/sidebar'; // Import SidebarTrigger
+// Removed SidebarTrigger import
 
 const mainNavItems = [
   { href: '/', label: 'Home', icon: <Home className="h-5 w-5" />, hideLabelOnSm: true },
@@ -47,13 +47,11 @@ const allMobileNavItems = [
 
 export function Header() {
   return (
-    <header className="bg-background sticky top-0 z-40 shadow-md"> {/* z-40 so it's below mobile sheet menu (z-50) */}
+    <header className="bg-background sticky top-0 z-40"> {/* z-40 so it's below mobile sheet menu (z-50) */}
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
           <div className="flex items-center space-x-3 md:space-x-4">
-            {/* SidebarTrigger for Desktop - hidden on mobile as mobile uses a sheet for main nav */}
-            <SidebarTrigger className="h-8 w-8 hidden md:flex text-primary hover:text-accent" aria-label="Toggle Categories Sidebar"/>
-            
+            {/* Removed SidebarTrigger button */}
             <Link href="/" className="text-3xl md:text-4xl font-bold text-primary hover:text-accent transition-colors" aria-label="Fahm Homepage">
               Fahm
             </Link>
