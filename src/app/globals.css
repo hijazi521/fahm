@@ -85,7 +85,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground transition-colors duration-300 ease-in-out;
     /* Use CSS variables for fonts defined in layout.tsx for consistency */
     font-family: var(--font-geist-sans), sans-serif;
   }
