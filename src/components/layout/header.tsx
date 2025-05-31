@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
 // import { SidebarTrigger } from '@/components/ui/sidebar';
+import { ThemeToggleButton } from './theme-toggle-button'; // Added import
 
 const mainNavItems = [
   { href: '/', label: 'Home', icon: <Home className="h-5 w-5" /> },
@@ -50,11 +51,12 @@ export function Header() {
     <header className="bg-background sticky top-0 z-40">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <div className="flex items-center space-x-3 md:space-x-4">
+          <div className="flex items-center space-x-2 md:space-x-3"> {/* Adjusted space-x for toggle */}
             {/* <SidebarTrigger className="text-foreground hover:bg-accent hover:text-accent-foreground h-7 w-7" /> */}
             <Link href="/" className="text-3xl md:text-4xl font-bold text-primary hover:text-accent transition-colors" aria-label="Fahm Homepage">
               Fahm
             </Link>
+            <ThemeToggleButton /> {/* Added Theme Toggle Button */}
           </div>
 
           {/* Desktop Navigation */}
