@@ -1,7 +1,7 @@
 
 import Link from 'next/link';
 import React from 'react';
-import { Home, LayoutGrid, UploadCloud, Users as UsersIcon, ChevronDown, Info, Menu as MenuIconImport, BookOpen, Handshake, Users as TeamIcon } from 'lucide-react'; // Renamed Menu to MenuIconImport
+import { Home, LayoutGrid, UploadCloud, Users as UsersIcon, ChevronDown, Info, Menu as MenuIconImport, BookOpen, Handshake, Users as TeamIcon } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -18,10 +18,10 @@ import {
   SheetClose,
 } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
-import { SidebarTrigger } from '@/components/ui/sidebar'; // Ensure SidebarTrigger is imported
+// import { SidebarTrigger } from '@/components/ui/sidebar';
 
 const mainNavItems = [
-  { href: '/', label: 'Home', icon: <Home className="h-5 w-5" />, hideLabelOnSm: true },
+  { href: '/', label: 'Home', icon: <Home className="h-5 w-5" /> },
   { href: '/publishments', label: 'Publishments', icon: <LayoutGrid className="h-5 w-5" /> },
   { href: '/submit', label: 'Submit', icon: <UploadCloud className="h-5 w-5" /> },
   { href: '/contact', label: 'Connect', icon: <UsersIcon className="h-5 w-5" /> },
@@ -51,9 +51,7 @@ export function Header() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
           <div className="flex items-center space-x-3 md:space-x-4">
-            {/* Sidebar Trigger for categories - visible on md and larger */}
-            {/* Uses the default MenuIcon from SidebarTrigger component */}
-            <SidebarTrigger className="md:flex hidden text-foreground hover:bg-accent hover:text-accent-foreground h-7 w-7" />
+            {/* <SidebarTrigger className="text-foreground hover:bg-accent hover:text-accent-foreground h-7 w-7" /> */}
             <Link href="/" className="text-3xl md:text-4xl font-bold text-primary hover:text-accent transition-colors" aria-label="Fahm Homepage">
               Fahm
             </Link>
@@ -70,7 +68,7 @@ export function Header() {
               >
                 <Link href={item.href} aria-label={item.label}>
                   {React.cloneElement(item.icon, { className: "h-5 w-5 group-hover:text-accent-foreground transition-colors" })}
-                  <span className={item.hideLabelOnSm ? 'hidden sm:inline ml-2' : 'sm:inline ml-2'}>{item.label}</span>
+                  <span className={'sm:inline ml-2'}>{item.label}</span>
                 </Link>
               </Button>
             ))}
@@ -152,4 +150,3 @@ export function Header() {
     </header>
   );
 }
-
