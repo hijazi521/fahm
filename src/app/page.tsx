@@ -147,7 +147,7 @@ export default function HomePage({ params, searchParams }: PageProps) {
             ))}
           </div>
         ) : (
-          <Card className="border-0 shadow-lg">
+          <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out">
             <CardContent className="py-8 text-center">
               <p className="text-xl text-muted-foreground">
                 Going to be released soon
