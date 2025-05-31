@@ -1,7 +1,7 @@
 
 import Link from 'next/link';
 import React from 'react';
-import { Home, LayoutGrid, UploadCloud, Users as UsersIcon, ChevronDown, Info, Menu as MenuIcon, BookOpen, Handshake, Users as TeamIcon } from 'lucide-react';
+import { Home, LayoutGrid, UploadCloud, Users as UsersIcon, ChevronDown, Info, Menu as MenuIconImport, BookOpen, Handshake, Users as TeamIcon } from 'lucide-react'; // Renamed Menu to MenuIconImport
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -18,7 +18,7 @@ import {
   SheetClose,
 } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
-import { SidebarTrigger } from '@/components/ui/sidebar';
+import { SidebarTrigger } from '@/components/ui/sidebar'; // Ensure SidebarTrigger is imported
 
 const mainNavItems = [
   { href: '/', label: 'Home', icon: <Home className="h-5 w-5" />, hideLabelOnSm: true },
@@ -51,9 +51,9 @@ export function Header() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
           <div className="flex items-center space-x-3 md:space-x-4">
-            <SidebarTrigger className="md:flex hidden text-foreground hover:bg-accent hover:text-accent-foreground">
-                <MenuIcon className="h-6 w-6" />
-            </SidebarTrigger>
+            {/* Sidebar Trigger for categories - visible on md and larger */}
+            {/* Uses the default MenuIcon from SidebarTrigger component */}
+            <SidebarTrigger className="md:flex hidden text-foreground hover:bg-accent hover:text-accent-foreground h-7 w-7" />
             <Link href="/" className="text-3xl md:text-4xl font-bold text-primary hover:text-accent transition-colors" aria-label="Fahm Homepage">
               Fahm
             </Link>
@@ -118,7 +118,7 @@ export function Header() {
                   className="text-foreground hover:bg-accent hover:text-accent-foreground"
                   aria-label="Open navigation menu"
                 >
-                  <MenuIcon className="h-6 w-6" />
+                  <MenuIconImport className="h-6 w-6" />
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-[280px] sm:w-[320px] bg-card p-0 text-card-foreground">
@@ -152,3 +152,4 @@ export function Header() {
     </header>
   );
 }
+
