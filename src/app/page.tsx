@@ -2,11 +2,11 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
-import { ArrowRight, BookOpen, Users, Handshake, LayoutGrid, Instagram, Send, Twitter } from 'lucide-react';
+import { ArrowRight, BookOpen, Users, Handshake, LayoutGrid, Instagram, Send, Twitter, Linkedin } from 'lucide-react'; // Added Linkedin
 import { DUMMY_ARTICLES, type Article } from '@/lib/constants';
 import { ArticleCard } from '@/components/research/article-card';
 import { use } from 'react';
-import React from 'react'; // Added for React.cloneElement
+import React from 'react';
 
 type PageProps = {
   params?: { [key: string]: string | string[] | undefined };
@@ -40,9 +40,6 @@ const featuredSections = [
   },
 ];
 
-// Get the two most recent articles for the "Recent Uploads" section
-// const recentArticles = DUMMY_ARTICLES.slice(0, 2);
-
 export default function HomePage({ params, searchParams }: PageProps) {
   if (params) {
     use(params);
@@ -54,7 +51,7 @@ export default function HomePage({ params, searchParams }: PageProps) {
   return (
     <div className="space-y-16">
       {/* Hero Section */}
-      <section className="text-center py-12 bg-card rounded-lg shadow-xl">
+      <section className="text-center py-12 bg-card rounded-lg shadow-xl border-0">
         <h1 className="text-5xl font-bold tracking-tight text-primary sm:text-6xl md:text-7xl">
           Welcome to Fahm
         </h1>
@@ -82,6 +79,17 @@ export default function HomePage({ params, searchParams }: PageProps) {
           >
             <Link href="/coming-soon">
               <Twitter className="h-8 w-8" />
+            </Link>
+          </Button>
+          <Button
+            asChild
+            size="icon"
+            variant="outline"
+            className="border-accent text-accent hover:bg-accent/10"
+            aria-label="Fahm on LinkedIn (Coming Soon)"
+          >
+            <Link href="/coming-soon">
+              <Linkedin className="h-8 w-8" />
             </Link>
           </Button>
           <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
@@ -146,9 +154,9 @@ export default function HomePage({ params, searchParams }: PageProps) {
         <h2 className="text-3xl font-semibold text-center mb-8 text-primary">
           Recent Uploads:
         </h2>
-        {recentArticles.length > 0 ? (
+        {DUMMY_ARTICLES.slice(0, 2).length > 0 ? ( // Check based on DUMMY_ARTICLES or a live data source
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {recentArticles.map((article: Article) => (
+            {DUMMY_ARTICLES.slice(0, 2).map((article: Article) => ( // Iterate over DUMMY_ARTICLES or live data
               <ArticleCard key={article.id} article={article} />
             ))}
           </div>
@@ -166,4 +174,3 @@ export default function HomePage({ params, searchParams }: PageProps) {
     </div>
   );
 }
-

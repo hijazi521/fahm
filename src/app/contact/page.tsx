@@ -11,10 +11,11 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
-import { Users, Send, Instagram, Twitter, Star, Loader2 } from "lucide-react";
+import { Users, Send, Instagram, Twitter, Star, Loader2, Linkedin } from "lucide-react"; // Added Linkedin
 import { handleContactFormSubmission } from "@/app/actions/contact-actions";
 import { handleFeedbackSubmission, type FeedbackFormValues as FeedbackFormSchemaValues } from "@/app/actions/feedback-actions";
 import { cn } from "@/lib/utils";
+import Link from "next/link"; // Added Link
 
 const contactFormSchema = z.object({
   name: z.string().min(2, {
@@ -342,17 +343,22 @@ export default function ConnectPage({ params, searchParams }: PageProps) {
           >
             <Instagram className="h-8 w-8" />
           </a>
-          <a
+          <Link
             href="/coming-soon" 
             className="text-muted-foreground hover:text-accent transition-colors"
             aria-label="Fahm on Twitter (Coming Soon)"
           >
             <Twitter className="h-8 w-8" />
-          </a>
+          </Link>
+          <Link
+            href="/coming-soon"
+            className="text-muted-foreground hover:text-accent transition-colors"
+            aria-label="Fahm on LinkedIn (Coming Soon)"
+          >
+            <Linkedin className="h-8 w-8" />
+          </Link>
         </div>
       </section>
     </div>
   );
 }
-
-    
