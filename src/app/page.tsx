@@ -98,7 +98,7 @@ export default function HomePage({ params, searchParams }: PageProps) {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {featuredSections.map((section) => (
-            <Card key={section.title} className="shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out flex flex-col">
+            <Card key={section.title} className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out flex flex-col">
               <CardHeader className="items-center text-center">
                 {section.icon}
                 <CardTitle className="text-xl mt-2">{section.title}</CardTitle>
@@ -120,7 +120,7 @@ export default function HomePage({ params, searchParams }: PageProps) {
 
       {/* Call to Action - Submit Work */}
       <section className="py-8">
-        <Card className="bg-accent text-accent-foreground shadow-xl hover:shadow-2xl transition-shadow duration-300 ease-in-out">
+        <Card className="border-0 bg-accent text-accent-foreground shadow-xl hover:shadow-2xl transition-shadow duration-300 ease-in-out">
           <CardContent className="p-4 sm:p-6 flex flex-col sm:flex-row items-center justify-between">
             <div className="text-center sm:text-left mb-4 sm:mb-0">
               <h3 className="text-2xl font-semibold underline">Have Research to Share?</h3>
@@ -147,7 +147,7 @@ export default function HomePage({ params, searchParams }: PageProps) {
             ))}
           </div>
         ) : (
-          <Card className="shadow-lg">
+          <Card className="border-0 shadow-lg">
             <CardContent className="py-8 text-center">
               <p className="text-xl text-muted-foreground">
                 Going to be released soon

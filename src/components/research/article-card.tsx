@@ -15,7 +15,7 @@ export function ArticleCard({ article }: ArticleCardProps) {
   // Removed onSummarize function
 
   return (
-    <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out hover:scale-105 hover:-translate-y-1 flex flex-col h-full bg-card">
+    <Card className="border-0 overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out hover:scale-105 hover:-translate-y-1 flex flex-col h-full bg-card">
       <CardHeader>
         <CardTitle className="text-xl font-semibold leading-tight">{article.title}</CardTitle>
         <CardDescription className="text-xs text-muted-foreground">
