@@ -99,8 +99,8 @@ export default function HomePage({ params, searchParams }: PageProps) {
         </h2>
         <div className="space-y-8">
           {featuredSections.map((section) => (
-            <div 
-              key={section.title} 
+            <div
+              key={section.title}
               className="flex flex-col sm:flex-row items-center bg-card p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out gap-6 border-0"
             >
               <div className="flex-shrink-0">
@@ -109,9 +109,9 @@ export default function HomePage({ params, searchParams }: PageProps) {
               <div className="flex-grow text-center sm:text-left">
                 <h3 className="text-xl font-semibold text-primary mb-2">{section.title}</h3>
                 <p className="text-muted-foreground mb-4 text-sm">{section.description}</p>
-                <Button 
-                  asChild 
-                  variant="link" 
+                <Button
+                  asChild
+                  variant="link"
                   className="p-0 h-auto text-accent hover:text-accent/80 text-sm font-medium"
                 >
                   <Link href={section.href}>
@@ -156,7 +156,7 @@ export default function HomePage({ params, searchParams }: PageProps) {
           <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out">
             <CardContent className="py-8 text-center">
               <p className="text-xl text-muted-foreground">
-                Going to be released soon
+                Will be updated soon
               </p>
             </CardContent>
           </Card>
@@ -165,3 +165,4 @@ export default function HomePage({ params, searchParams }: PageProps) {
     </div>
   );
 }
+
