@@ -29,17 +29,17 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: 'Fahm',
-  description: 'Research papers and articles, summarized by AI.',
+  description: 'Publishing research papers and articles takes much time and money. Fahm makes research publishing effortless and free for everyone. A mix of our writing and independent submissions. We cover social issues and more.',
   openGraph: {
     title: 'Fahm',
-    description: 'Research papers and articles, summarized by AI.',
+    description: 'Publishing research papers and articles takes much time and money. Fahm makes research publishing effortless and free for everyone. A mix of our writing and independent submissions. We cover social issues and more.',
     url: 'https://your-actual-domain.com', // TODO: Replace with your actual domain
     siteName: 'Fahm',
     images: [
       {
         url: '/fahm-social-preview.png', // Path relative to the public folder
-        width: 1080, // Assumed width of your image
-        height: 1080, // Assumed height of your image
+        width: 1080,
+        height: 1080,
         alt: 'Fahm - Free Research Publishing, Worldwide',
       },
     ],
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Fahm',
-    description: 'Research papers and articles, summarized by AI.',
+    description: 'Publishing research papers and articles takes much time and money. Fahm makes research publishing effortless and free for everyone. A mix of our writing and independent submissions. We cover social issues and more.',
     images: ['/fahm-social-preview.png'], // Path relative to the public folder
     // TODO: You can add your Twitter handle here if you have one, e.g., creator: '@fahmsite',
   },
